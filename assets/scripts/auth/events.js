@@ -9,7 +9,10 @@ const onIndex = function () {
     .catch(ui.indexFailure)
 }
 
-
 const addHandlers = () => {
-  $('#index').on('click' onIndex)
+  $('#index').on('click', onIndex)
+}
+
+module.exports = {
+  addHandlers
 }
