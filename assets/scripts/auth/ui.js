@@ -1,4 +1,5 @@
 const indexSuccess = (response) => {
+  $('#message').text("You're good")
   console.log('Success')
 }
 
