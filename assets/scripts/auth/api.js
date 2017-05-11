@@ -1,10 +1,13 @@
+const config = require('../config.js')
+
 const index = () => {
   // console.log('success')
   return $.ajax({
-    url: config.apiOrigin + '/workouts',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    url: config.apiOrigin + '/games',
+    method: 'GET'
   })
+}
+
+module.exports = {
+  index
 }
