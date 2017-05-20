@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Do not add `link` tags unless you know what you are doing -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" type="text/css" href="./assets/styles/index.scss">
 
@@ -54,11 +53,17 @@
   <!-- Begin page content -->
   <div class="container">
     <form id="sign-up">
-  <input class="form-control" name="credentials[email]" type="text" value="Email" onFocus="this.select()">
-  <input class="form-control" name="credentials[password]" type="password" value="Password" onFocus="this.select()">
-  <input class="form-control" name="credentials[password_confirmation]" type="password" value="Password" onFocus="this.select()">
-  <input class="submit" type="submit" name="submit" value="Sign up">
-</form>
+      <input class="form-control" name="credentials[email]" type="text" value="Email" onFocus="this.select()">
+      <input class="form-control" name="credentials[password]" type="password" value="Password" onFocus="this.select()">
+      <input class="form-control" name="credentials[password_confirmation]" type="password" value="Password" onFocus="this.select()">
+      <input class="submit" type="submit" name="submit" value="Sign up">
+    </form>
+
+    <form id="sign-in">
+      <input class="form-control" name="credentials[email]" type="text" value="Email" onFocus="this.select()">
+      <input class="form-control" name="credentials[password]" type="password" value="Password" onFocus="this.select()">
+      <input class="submit" type="submit" name="submit" value="Sign in!">
+    </form>
     <!-- <div class="page-header">
       <h1>Sticky footer with fixed navbar</h1>
     </div> -->
@@ -74,19 +79,6 @@
     </div>
   </footer>
 
-
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script>
-    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-  </script>
-  <script src="../../dist/js/bootstrap.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
-
-</html>
 
 </html>

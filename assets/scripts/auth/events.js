@@ -22,14 +22,14 @@ const onSignUp = function (event) {
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
 }
-//
-// const onSignIn = function (event) {
-//   const data = getFormFields(this)
-//   event.preventDefault()
-//   api.signIn(data)
-//     .then(ui.signInSuccess)
-//     .catch(ui.signInFailure)
-// }
+
+const onSignIn = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
 
 // const onChangePassword = function (event) {
 //   event.preventDefault()
@@ -51,8 +51,8 @@ const onSignUp = function (event) {
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('li#sign-up-nav.active').on('click', onRevealSignUp)
+  $('#sign-in').on('submit', onSignIn)
 }
-
 module.exports = {
   addHandlers
 }

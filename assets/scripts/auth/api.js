@@ -11,20 +11,16 @@ const signUp = (data) => {
   })
 }
 
-const signUpSuccess = (data) => {
-  $('form#sign-in').show()
-  $('form#sign-up').hide()
-  $('#instruments-div').text('')
-  $('div.error-handling').text('')
-  document.getElementById('sign-up').reset()
+const signIn = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-in',
+    method: 'POST',
+    data
+  })
 }
 
-const signUpFailure = () => {
-  $('div.error-handling').text('Sign up error')
-}
 module.exports = {
   signUp,
-  signUpSuccess,
-  signUpFailure
+  signIn
   // index
 }
