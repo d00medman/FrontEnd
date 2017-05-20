@@ -30,9 +30,19 @@ const signInFailure = (data) => {
   console.log('signInFailure ui')
   // $('div.error-handling').text('Sign in error')
 }
+
+const signOutSuccess = (data) => {
+  console.log('signOutSuccess')
+}
+
+const signOutFailure = (data) => {
+  console.log('signOutFailure')
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure
+  signInFailure,
+  signOutSuccess,
+  signOutFailure
 }
