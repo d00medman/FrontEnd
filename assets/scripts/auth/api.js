@@ -3,7 +3,7 @@ const config = require('../config.js')
 const index = () => {
   // console.log('success')
   return $.ajax({
-    url: config.apiOrigin + '/games',
+    url: config.apiOrigin + '/surveys',
     method: 'GET'
   })
 }
