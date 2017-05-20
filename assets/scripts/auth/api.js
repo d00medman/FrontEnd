@@ -1,13 +1,30 @@
-const config = require('../config.js')
+'use strict'
 
-const index = () => {
-  // console.log('success')
+const config = require('../config.js')
+// const store = require('../store.js')
+
+const signUp = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys',
-    method: 'GET'
+    url: config.apiOrigin + '/sign-up',
+    method: 'POST',
+    data
   })
 }
 
+const signUpSuccess = (data) => {
+  $('form#sign-in').show()
+  $('form#sign-up').hide()
+  $('#instruments-div').text('')
+  $('div.error-handling').text('')
+  document.getElementById('sign-up').reset()
+}
+
+const signUpFailure = () => {
+  $('div.error-handling').text('Sign up error')
+}
 module.exports = {
-  index
+  signUp,
+  signUpSuccess,
+  signUpFailure
+  // index
 }

@@ -1,13 +1,12 @@
-const indexSuccess = (response) => {
-  $('#message').text("You're good")
-  console.log('Success')
+const signUpSuccess = (data) => {
+  console.log(data)
+  document.getElementById('sign-up').reset()
 }
 
-const indexFailure = (response) => {
-  console.log('Failure')
+const signUpFailure = () => {
+  console.log('signUpFailure')
 }
-
 module.exports = {
-  indexSuccess,
-  indexFailure
+  signUpSuccess,
+  signUpFailure
 }
