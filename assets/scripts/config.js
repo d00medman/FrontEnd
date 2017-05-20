@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://thebestgasquad.github.io'
+    production: 'https://radiant-plains-78167.herokuapp.com/'
   }
 }
 
