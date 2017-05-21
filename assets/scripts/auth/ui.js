@@ -15,6 +15,7 @@ const signUpFailure = () => {
 const signInSuccess = (data) => {
   console.log('signInSuccess')
   store.user = data.user
+  document.querySelector('.core').style.visibility = 'visible'
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
 //   $('button#nav-sign-up').hide()
@@ -37,6 +38,7 @@ const signOutSuccess = (data) => {
 
 const signOutFailure = (data) => {
   console.log('signOutFailure')
+  document.querySelector('.core').style.visibility = 'hidden'
 }
 module.exports = {
   signUpSuccess,
