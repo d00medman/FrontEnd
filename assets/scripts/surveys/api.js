@@ -37,6 +37,8 @@ const show = function (id) {
 const destroy = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + id,
+    // problem is here: config.apiOrigin causes the AJAX request to send a bad
+    // request to the server
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
