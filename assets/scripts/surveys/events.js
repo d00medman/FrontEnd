@@ -29,11 +29,19 @@ const onShow = function (event) {
     .catch(ui.showFailure)
 }
 
+const onDestroy = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.destroy(data.survey.id)
+    .then(ui.destroySuccess)
+    .catch(ui.destroyFailure)
+}
+
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.index').on('click', onIndex)
   $('.show').on('submit', onShow)
-  // $('.destroy').on('submit', onDestroy)
+  $('.destroy').on('submit', onDestroy)
   // $('.update').on('submit', onUpdate)
 }
 

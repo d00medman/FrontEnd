@@ -34,10 +34,20 @@ const show = function (id) {
   })
 }
 
+const destroy = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/surveys/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   create,
   // update,
   index,
-  show
-  // destroy
+  show,
+  destroy
 }

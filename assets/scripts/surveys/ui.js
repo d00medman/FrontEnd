@@ -40,15 +40,27 @@ const showFailure = (error) => {
   // burndown
 }
 
+const destroySuccess = (response) => {
+  // burndown
+  console.log('successful deletion')
+  // burndown
+}
+
+const destroyFailure = (error) => {
+  // burndown
+  console.log('failure to delete')
+  // burndown
+}
+
 module.exports = {
   createSuccess,
   createFailure,
   indexSuccess,
   indexFailure,
   showSuccess,
-  showFailure
-  // destroySuccess,
-  // destroyFailure,
+  showFailure,
+  destroySuccess,
+  destroyFailure
   // updateSuccess,
   // updateFailure
 }
