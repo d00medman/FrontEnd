@@ -21,10 +21,18 @@ const onIndex = function (event) {
     .catch(ui.indexFailure)
 }
 
+const onShow = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.show(data.survey.id)
+    .then(ui.showSuccess)
+    .catch(ui.showFailure)
+}
+
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.index').on('click', onIndex)
-  // $('.show').on('submit', onShow)
+  $('.show').on('submit', onShow)
   // $('.destroy').on('submit', onDestroy)
   // $('.update').on('submit', onUpdate)
 }

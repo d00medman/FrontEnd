@@ -27,13 +27,26 @@ const indexFailure = (error) => {
   // burndown
 }
 
+const showSuccess = (response) => {
+  // burndown
+  console.log('success')
+  console.log(response)
+  // burndown
+}
+
+const showFailure = (error) => {
+  // burndown
+  console.log('failed to show')
+  // burndown
+}
+
 module.exports = {
   createSuccess,
   createFailure,
   indexSuccess,
-  indexFailure
-  // showSuccess,
-  // showFailure,
+  indexFailure,
+  showSuccess,
+  showFailure
   // destroySuccess,
   // destroyFailure,
   // updateSuccess,
