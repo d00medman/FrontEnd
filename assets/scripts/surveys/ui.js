@@ -48,7 +48,7 @@ const destroySuccess = (response) => {
 
 const destroyFailure = (error) => {
   // burndown
-  console.log('failure to delete')
+  console.log('deletion failed')
   // burndown
 }
 
