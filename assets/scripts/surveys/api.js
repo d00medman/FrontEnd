@@ -5,7 +5,7 @@ const store = require('../store.js')
 
 const create = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys/',
+    url: config.apiOrigin + '/surveys',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
