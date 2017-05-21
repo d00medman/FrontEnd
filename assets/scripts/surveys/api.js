@@ -5,7 +5,7 @@ const store = require('../store.js')
 
 const create = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys',
+    url: config.apiOrigin + '/surveys/',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -14,10 +14,20 @@ const create = (data) => {
   })
 }
 
+const index = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/surveys/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
-  create
+  create,
   // update,
-  // index,
+  index
   // show,
   // destroy
 }

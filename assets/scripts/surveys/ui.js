@@ -14,11 +14,24 @@ const createFailure = (error) => {
   // burndown
 }
 
+const indexSuccess = (response) => {
+  // burndown
+  console.log(response)
+  console.log('success')
+  // burndown
+}
+
+const indexFailure = (error) => {
+  // burndown
+  console.log('failed to index')
+  // burndown
+}
+
 module.exports = {
   createSuccess,
-  createFailure
-  // indexSuccess,
-  // indexFailure,
+  createFailure,
+  indexSuccess,
+  indexFailure
   // showSuccess,
   // showFailure,
   // destroySuccess,
