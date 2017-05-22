@@ -5,10 +5,10 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
-const onCreate = function (event) {
+const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
+  console.log('events', data)
   api.create(data)
     .then(ui.createSuccess)
     .catch(ui.createFailure)
@@ -46,12 +46,18 @@ const onUpdate = function (event) {
     .catch(ui.updateFailure)
 }
 
+const onRevealAddQuestion = function (event) {
+  console.log('events')
+  $('form#create-survey').show()
+}
+
 const addHandlers = () => {
-  $('.create').on('submit', onCreate)
+  $('#create-survey').on('submit', onCreateSurvey)
   $('.index').on('click', onIndex)
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
   $('.update').on('submit', onUpdate)
+  $('#create-survey-nav').on('click', onRevealAddQuestion)
 }
 
 module.exports = {
