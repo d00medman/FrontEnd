@@ -5,7 +5,7 @@ const store = require('../store.js')
 
 const create = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys/',
+    url: config.apiOrigin + '/surveys',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -14,13 +14,14 @@ const create = (data) => {
   })
 }
 
-const index = function () {
+const indexOfSurveys = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data: data
   })
 }
 
@@ -34,9 +35,9 @@ const show = function (id) {
   })
 }
 
-const destroy = function (id) {
+const destroy = function (surveyId) {
   return $.ajax({
-    url: config.apiOrigin + '/surveys/' + id,
+    url: config.apiOrigin + '/surveys/' + surveyId,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -44,21 +45,21 @@ const destroy = function (id) {
   })
 }
 
-const update = (data, id) => {
+const update = (surveyId, data) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys/' + id, // now its a 400 error
+    url: config.apiOrigin + '/surveys/' + surveyId, // now its a 400 error
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
 module.exports = {
   create,
   update,
-  index,
+  indexOfSurveys,
   show,
   destroy
 }

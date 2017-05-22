@@ -16,9 +16,9 @@ const onCreateSurvey = function (event) {
 
 const onIndex = function (event) {
   event.preventDefault()
-  api.index()
-    .then(ui.indexSuccess)
-    .catch(ui.indexFailure)
+  api.indexOfSurveys()
+    .then(ui.indexOfSurveysSuccess)
+    .catch(ui.indexOfSurveysFailure)
 }
 
 const onShow = function (event) {
@@ -31,17 +31,17 @@ const onShow = function (event) {
 
 const onDestroy = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
-  api.destroy(data.survey.id)
+  const surveyId = $(this).attr('surveyId')
+  api.destroy(surveyId)
     .then(ui.destroySuccess)
     .catch(ui.destroyFailure)
 }
 
 const onUpdate = function (event) {
   event.preventDefault()
+  const surveyId = $(this).attr('surveyId')
   const data = getFormFields(event.target)
-  const id = data.survey.id
-  api.update(data, id)
+  api.update(surveyId, data)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
@@ -53,10 +53,12 @@ const onRevealAddQuestion = function (event) {
 
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
-  $('.index').on('click', onIndex)
+  $('#show-surveys').on('click', onIndex)
   $('.show').on('submit', onShow)
-  $('.destroy').on('submit', onDestroy)
-  $('.update').on('submit', onUpdate)
+  $('#content').on('click', '.delete-survey-button', onDestroy)
+  $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
+  // $('.destroy').on('submit', onDestroy)
+  // $('.update').on('submit', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
 }
 
