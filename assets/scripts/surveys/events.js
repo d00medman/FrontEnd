@@ -37,12 +37,21 @@ const onDestroy = function (event) {
     .catch(ui.destroyFailure)
 }
 
+const onUpdate = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const targ = data.survey
+  api.update(data, targ)
+    .then(ui.updateSuccess)
+    .catch(ui.updateFailure)
+}
+
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.index').on('click', onIndex)
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
-  // $('.update').on('submit', onUpdate)
+  $('.update').on('submit', onUpdate)
 }
 
 module.exports = {
