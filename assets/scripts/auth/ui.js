@@ -5,6 +5,7 @@ const store = require('../store.js')
 
 const signUpSuccess = (data) => {
   console.log('sign-up ', data)
+
   document.getElementById('sign-up').reset()
 }
 
@@ -15,6 +16,8 @@ const signUpFailure = () => {
 const signInSuccess = (data) => {
   console.log('signInSuccess')
   store.user = data.user
+  $('form#sign-up').hide()
+  $('form#sign-in').hide()
   document.querySelector('.core').style.visibility = 'visible'
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
