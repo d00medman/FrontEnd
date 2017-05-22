@@ -1,7 +1,6 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-
 const api = require('./api')
 const ui = require('./ui')
 
@@ -14,17 +13,18 @@ const onCreate = function (event) {
     .catch(ui.createFailure)
 }
 
-const onIndex = function (event) {
-  event.preventDefault()
-  api.index()
-    .then(ui.indexSuccess)
-    .catch(ui.indexFailure)
-}
+// const onIndex = function (event) {
+//   event.preventDefault()
+//   api.index()
+//     .then(ui.indexSuccess)
+//     .catch(ui.indexFailure)
+// }
 
-const onShow = function (event) {
+const onShowOneSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.show(data.survey.id)
+  api.showOneSurvey(data)
+  console.log(data)
     .then(ui.showSuccess)
     .catch(ui.showFailure)
 }
@@ -32,7 +32,9 @@ const onShow = function (event) {
 const onDestroy = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  const surveyId = $(event.target).attr('surveyId')
   api.destroy(data.survey.id)
+  api.destroy(surveyId)
     .then(ui.destroySuccess)
     .catch(ui.destroyFailure)
 }
@@ -40,21 +42,22 @@ const onDestroy = function (event) {
 const onUpdate = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const id = data.survey.id
+  // const id = data.survey.id
+  const surveyId = $(this).attr('surveyId')
   console.log(data.survey.id)
-  api.update(data, id)
+  api.update(data, surveyId)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
 
 const addHandlers = () => {
-  $('.create').on('submit', onCreate)
-  $('.index').on('click', onIndex)
-  $('.show').on('submit', onShow)
-  $('.destroy').on('submit', onDestroy)
-  $('.update').on('submit', onUpdate)
-  $('#content').on('click', '.delete-task-button', onDestroy)
-  $('#content').on('submit', '.update-task-by-id-form', onUpdate)
+  $('#createSurvey').on('submit', onCreate)
+  // $('.index').on('click', onIndex)
+  $('#getUserSurveys').on('click', onShowOneSurvey)
+  // $('.destroy').on('submit', onDestroy)
+  // $('.update').on('submit', onUpdate)
+  $('#content').on('click', '.delete-survey-button', onDestroy)
+  $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
 }
 
 module.exports = {

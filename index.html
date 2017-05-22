@@ -46,7 +46,7 @@
           </li>
         </ul>
       </div>
-      <!--/.nav-collapse -->
+      <!-- /.nav-collapse -->
     </div>
   </nav>
 
@@ -66,52 +66,58 @@
     </form>
     <!-- <div class="page-header">
       <h1>Sticky footer with fixed navbar</h1>
-    </div> -->
-    <!-- <p class="lead">Pin a fixed-height footer to the bottom of the viewport in
+    </div>
+    <p class="lead">Pin a fixed-height footer to the bottom of the viewport in
       desktop browsers with this custom HTML and CSS. A fixed navbar has been
-       added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p> -->
-    <!-- <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p> -->
-  </div>
+       added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
+    <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+  </div> -->
 
-  <div class="core">
+  <!-- <div class="core"> -->
 
-    <form class="create">
+    <!-- <form class="create">
       <fieldset>
         <input type="text" name="survey[prompt]" placeholder="Create survey">
         <input type="submit" name="submit" value="Submit fave">
       </fieldset>
     </form>
 
-     <button class="index" type="button">Index of Surveys</button>
+     <button class="index" type="button">Index of Surveys</button> -->
 
-    <form class="show">
+    <!-- <form class="show">
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Find survey by ID">
         <input type="submit" name="submit" value="Submit ID">
       </fieldset>
-    </form>
+    </form> -->
 
-    <form class="destroy">
+    <!-- <form class="destroy">
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Delete survey by ID">
         <input type="submit" name="submit" value="Submit ID">
       </fieldset>
-    </form>
+    </form> -->
 
-    <form class="update">
+    <!-- <form class="update">
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Select ID">
         <input type="text" name="survey[prompt]" placeholder="Change Title">
         <input type="submit" name="submit" value="Update Movie">
       </fieldset>
     </form>
+</body>
+  </div> -->
 
-  </div>
+  <p id="message"></p>
+
+  <form id="createSurvey">
+          <input id="surveyList" type="text" name="survey[description]">
+          <button type="submit" class="btn btn-default">New Survey</button>
+          <button id="getUserSurveys" type="submit" class="btn btn-default">Get Surveys</button>
+      </form>
 
   <!-- This is where handlebars inserts -->
 <div id="content"></div>
-
-</body>
 <footer id="footer">
   <div class="container">
     <div class="row">
