@@ -17,7 +17,7 @@ const userMessage = (txt) => {
 
 const createSuccess = (data) => {
   store.userSurveys = data.surveys
-  console.log('success')
+  console.log('create success')
   console.log(data)
   refreshTable()
   // burndown
@@ -30,18 +30,21 @@ const createFailure = (error) => {
   // burndown
 }
 
-// const indexSuccess = (response) => {
-//   // burndown
-//   console.log(response)
-//   console.log('success')
-//   // burndown
-// }
+const indexOfSurveysSuccess = (data) => {
+  if (data.surveys.length === 0) {
+    userMessage('You have no surveys.')
+  }
+  store.userSurveys = data.surveys
+  console.log(data)
+  console.log('success')
+  refreshTable()
+}
 
-// const indexFailure = (error) => {
-//   // burndown
-//   console.log('failed to index')
-//   // burndown
-// }
+const indexOfSurveysFailure = () => {
+  // burndown
+  console.log('failed to index')
+  // burndown
+}
 
 const showOneSurveySuccess = (data) => {
   // burndown
@@ -50,7 +53,7 @@ const showOneSurveySuccess = (data) => {
   if (data.surveys.length === 0) {
     userMessage('You have no surveys.')
   }
-  // store.userSurveys = data.surveys
+  store.userSurveys = data.surveys
   refreshTable()
 }
 
@@ -62,9 +65,9 @@ const showOneSurveyFailure = (surveyId) => {
 const destroySuccess = () => {
   console.log('successful deletion')
   refreshTable()
-  api.showOneSurvey()
-    .then(showOneSurveySuccess)
-    .catch(showOneSurveyFailure)
+  api.indexOfSurveys()
+    .then(indexOfSurveysSuccess)
+    .catch(indexOfSurveysFailure)
   // burndown
 }
 
@@ -92,12 +95,13 @@ const updateFailure = (data) => {
 module.exports = {
   createSuccess,
   createFailure,
-  // indexSuccess,
-  // indexFailure,
+  indexOfSurveysSuccess,
+  indexOfSurveysFailure,
   showOneSurveySuccess,
   showOneSurveyFailure,
   destroySuccess,
   destroyFailure,
   updateSuccess,
-  updateFailure
+  updateFailure,
+  refreshTable
 }

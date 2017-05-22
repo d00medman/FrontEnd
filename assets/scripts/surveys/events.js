@@ -6,34 +6,35 @@ const ui = require('./ui')
 
 const onCreate = function (event) {
   event.preventDefault()
-  const data = getFormFields(this)
-  console.log(data)
+  const data = getFormFields(event.target)
+  console.log('create survey function fired', data)
   api.create(data)
     .then(ui.createSuccess)
     .catch(ui.createFailure)
 }
 
-// const onIndex = function (event) {
-//   event.preventDefault()
-//   api.index()
-//     .then(ui.indexSuccess)
-//     .catch(ui.indexFailure)
-// }
+const onIndex = function (event) {
+  console.log('index of all surveys')
+  event.preventDefault()
+  api.indexOfSurveys()
+    .then(ui.indexOfSurveysSuccess)
+    .catch(ui.indexOfSurveysFailure)
+}
 
 const onShowOneSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   api.showOneSurvey(data)
-  console.log(data)
-    .then(ui.showSuccess)
-    .catch(ui.showFailure)
+    .then(ui.showOneSurveySuccess)
+    .catch(ui.showOneSurveyFailure)
 }
 
 const onDestroy = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
+  // const data = getFormFields(event.target)
   const surveyId = $(event.target).attr('surveyId')
-  api.destroy(data.survey.id)
+  ui.refreshTable()
+  // api.destroy(data.survey.id)
   api.destroy(surveyId)
     .then(ui.destroySuccess)
     .catch(ui.destroyFailure)
@@ -51,8 +52,8 @@ const onUpdate = function (event) {
 }
 
 const addHandlers = () => {
-  $('#createSurvey').on('submit', onCreate)
-  // $('.index').on('click', onIndex)
+  $('.create').on('submit', onCreate)
+  $('.indexOfSurveys').on('click', onIndex)
   $('#getUserSurveys').on('click', onShowOneSurvey)
   // $('.destroy').on('submit', onDestroy)
   // $('.update').on('submit', onUpdate)

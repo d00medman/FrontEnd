@@ -6,16 +6,16 @@ const store = require('../store.js')
 const create = (data) => {
   console.log(data)
   return $.ajax({
-    url: config.apiOrigin + '/surveys/',
+    url: config.apiOrigin + '/surveys',
     method: 'POST',
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data
   })
 }
 
-const index = function (data) {
+const indexOfSurveys = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
     method: 'GET',
@@ -39,10 +39,10 @@ const showOneSurvey = function (surveyId) {
 const destroy = function (surveyId) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + surveyId,
-    method: 'DELETE'
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // }
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -60,7 +60,7 @@ const update = (data, surveyId) => {
 module.exports = {
   create,
   update,
-  index,
+  indexOfSurveys,
   showOneSurvey,
   destroy
 }

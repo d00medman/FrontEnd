@@ -15,7 +15,7 @@ const signUpFailure = () => {
 const signInSuccess = (data) => {
   console.log('signInSuccess')
   store.user = data.user
-  document.querySelector('.core').style.visibility = 'visible'
+  // document.querySelector('.core').style.visibility = 'visible'
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
 //   $('button#nav-sign-up').hide()
