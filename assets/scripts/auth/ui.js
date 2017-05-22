@@ -18,7 +18,6 @@ const signInSuccess = (data) => {
   store.user = data.user
   $('form#sign-up').hide()
   $('form#sign-in').hide()
-  document.querySelector('.core').style.visibility = 'visible'
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
 //   $('button#nav-sign-up').hide()
