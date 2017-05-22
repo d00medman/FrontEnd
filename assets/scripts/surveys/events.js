@@ -40,8 +40,8 @@ const onDestroy = function (event) {
 const onUpdate = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const targ = data.survey
-  api.update(data, targ)
+  const id = data.survey.id
+  api.update(data, id)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
