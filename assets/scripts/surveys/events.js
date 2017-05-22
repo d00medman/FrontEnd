@@ -41,6 +41,7 @@ const onUpdate = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const id = data.survey.id
+  console.log(data.survey.id)
   api.update(data, id)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
@@ -52,6 +53,8 @@ const addHandlers = () => {
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
   $('.update').on('submit', onUpdate)
+  $('#content').on('click', '.delete-task-button', onDestroy)
+  $('#content').on('submit', '.update-task-by-id-form', onUpdate)
 }
 
 module.exports = {
