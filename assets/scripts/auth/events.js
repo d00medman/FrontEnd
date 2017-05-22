@@ -11,7 +11,14 @@ const onRevealSignUp = function () {
     height: 'toggle'
   }, 200, function () {})
   $('form#sign-in').hide()
-  $('form#add-instrument').hide()
+}
+
+const onRevealSignIn = function () {
+  console.log('reavealevents')
+  $('form#sign-in').animate({
+    height: 'toggle'
+  }, 200, function () {})
+  $('form#sign-up').hide()
 }
 
 const onSignUp = function (event) {
@@ -58,7 +65,8 @@ const onSignOut = function (event) {
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
-  $('li#sign-up-nav.active').on('click', onRevealSignUp)
+  $('#sign-up-nav').on('click', onRevealSignUp)
+  $('#sign-in-nav').on('click', onRevealSignIn)
   $('#sign-in').on('submit', onSignIn)
   $('li#sign-out').on('click', onSignOut)
 }
