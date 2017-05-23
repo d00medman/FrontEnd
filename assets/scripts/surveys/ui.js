@@ -1,13 +1,31 @@
 'use strict'
 
-const createSuccess = (response) => {
+const store = require('../store')
+
+const createSurveySuccess = (response) => {
+  store.surveyID = response.survey.id
+  console.log('store.surveyID' + store.surveyID)
   // burndown
   console.log('success')
   console.log(response)
   // burndown
 }
 
-const createFailure = (error) => {
+const createSurveyFailure = (error) => {
+  // burndown
+  console.log('failed to create')
+  console.log(error)
+  // burndown
+}
+
+const createQuestionSuccess = (response) => {
+  // burndown
+  console.log('success')
+  console.log(response)
+  // burndown
+}
+
+const createQuestionFailure = (error) => {
   // burndown
   console.log('failed to create')
   console.log(error)
@@ -66,8 +84,10 @@ const updateFailure = (error) => {
 }
 
 module.exports = {
-  createSuccess,
-  createFailure,
+  createSurveySuccess,
+  createSurveyFailure,
+  createQuestionSuccess,
+  createQuestionFailure,
   indexSuccess,
   indexFailure,
   showSuccess,

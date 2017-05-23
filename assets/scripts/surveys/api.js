@@ -3,7 +3,7 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const create = (data) => {
+const createSurvey = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
     method: 'POST',
@@ -11,6 +11,23 @@ const create = (data) => {
       Authorization: 'Token token=' + store.user.token
     },
     data
+  })
+}
+
+const createQuestion = (data) => {
+  console.log("store.surveyID: " + store.surveyID)
+  return $.ajax({
+    url: config.apiOrigin + '/questions/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'question': {
+        'propmt': data.prompt,
+        '_survey': store.surveyID
+      }
+    }
   })
 }
 
@@ -56,7 +73,8 @@ const update = (data, id) => {
 }
 
 module.exports = {
-  create,
+  createSurvey,
+  createQuestion,
   update,
   index,
   show,
