@@ -3,6 +3,26 @@ const store = require('../store.js')
 const showSurveysHB = require('../surveyHandlebars.handlebars')
 const api = require('./api.js')
 
+const createSurveySuccess = (response) => {
+  store.surveyID = response.survey.id
+  console.log('store.surveyID' + store.surveyID)
+  console.log('success')
+  console.log(response)
+
+}
+
+const createSurveyFailure = (error) => {
+  // burndown
+  console.log('failed to create')
+  console.log(error)
+  // burndown
+}
+
+const createQuestionSuccess = (response) => {
+  // burndown
+  console.log('success')
+  console.log(response)
+
 const refreshTable = () => {
   const showSurveyHtml = showSurveysHB({ surveys: store.userSurveys })
   $('#content').empty()
@@ -15,15 +35,8 @@ const userMessage = (txt) => {
   setTimeout(function () { $('#message').text('') }, 2000)
 }
 
-const createSuccess = (data) => {
-  store.userSurveys = data.surveys
-  console.log('create success')
-  console.log(data)
-  refreshTable()
-  // burndown
-}
 
-const createFailure = (error) => {
+const createQuestionFailure = (error) => {
   // burndown
   console.log(error, 'failed to create')
   console.log(error)
@@ -93,8 +106,10 @@ const updateFailure = (data) => {
 }
 
 module.exports = {
-  createSuccess,
-  createFailure,
+  createSurveySuccess,
+  createSurveyFailure,
+  createQuestionSuccess,
+  createQuestionFailure,
   indexOfSurveysSuccess,
   indexOfSurveysFailure,
   showOneSurveySuccess,
