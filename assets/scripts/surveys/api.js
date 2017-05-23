@@ -16,6 +16,7 @@ const createSurvey = (data) => {
 
 const createQuestion = (data) => {
   console.log("store.surveyID: " + store.surveyID)
+  console.log('data.prompt: ' + data.prompt)
   return $.ajax({
     url: config.apiOrigin + '/questions/',
     method: 'POST',
@@ -24,7 +25,7 @@ const createQuestion = (data) => {
     },
     data: {
       'question': {
-        'propmt': data.prompt,
+        'prompt': data.prompt,
         '_survey': store.surveyID
       }
     }

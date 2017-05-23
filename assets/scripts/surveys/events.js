@@ -8,7 +8,7 @@ const ui = require('./ui')
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
+  console.log('create survey data: ' + data)
   api.createSurvey(data)
     .then(ui.createSurveySuccess)
     .catch(ui.createSurveyFailure)
@@ -17,7 +17,6 @@ const onCreateSurvey = function (event) {
 const onCreateQuestion = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log("create question data" + data)
   api.createQuestion(data)
     .then(ui.createQuestionSuccess)
     .catch(ui.createQuestionFailure)
