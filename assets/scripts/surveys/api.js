@@ -55,7 +55,7 @@ const destroy = function (surveyId) {
 
 const update = (surveyId, data) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys/' + surveyId, // now its a 400 error
+    url: config.apiOrigin + '/surveys/' + surveyId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
