@@ -54,6 +54,12 @@ const onUpdate = function (event) {
     .catch(ui.updateFailure)
 }
 
+const onAnswerQuestion = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+}
+
 const addHandlers = () => {
   $('.create-survey').on('submit', onCreateSurvey)
   $('.create-question').on('submit', onCreateQuestion)
@@ -61,6 +67,7 @@ const addHandlers = () => {
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
   $('.update').on('submit', onUpdate)
+  $('.answer-question').on('submit', onAnswerQuestion)
 }
 
 module.exports = {
