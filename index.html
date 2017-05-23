@@ -23,19 +23,14 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
         <a class="navbar-brand" href="#">Survey Lemur</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active" id='sign-up-nav'><a href="#">Sign Up</a></li>
-          <li><a href="#about">Sign In</a></li>
-          <li><a href="#contact">Take Survey</a></li>
+          <li><button type="button" class="btn btn-default navbar-btn" id='sign-up-nav'>Sign Up</button></li>
+          <li><button type="button" class="btn btn-default navbar-btn" id='sign-in-nav'>Sign In</button></li>
+          <li><button type="button" class="btn btn-default navbar-btn" id='take-survey-nav'>Take Survey</button></li>
+          <li> <button type="button" class="btn btn-default navbar-btn" id='create-survey-nav'>Create Survey</button></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -45,8 +40,12 @@
             </ul>
           </li>
         </ul>
+        <div class="navbar-header" style="float: right;">
+          <button class="btn btn-default navbar-btn right">Show all Surveys</button>
+        </div>
+
       </div>
-      <!--/.nav-collapse -->
+      <!-- /.nav-collapse -->
     </div>
   </nav>
 
@@ -64,18 +63,26 @@
       <input class="form-control" name="credentials[password]" type="password" value="Password" onFocus="this.select()">
       <input class="submit" type="submit" name="submit" value="Sign in!">
     </form>
+
+    <form id="create-survey">
+      <fieldset>
+        <input class="form-control" onFocus="this.select()"type="text" name="survey[prompt]" placeholder="Create survey">
+        <input class="submit" type="submit" name="submit" value="Sign in!">
+      </fieldset>
+    </form>
+
+
     <!-- <div class="page-header">
       <h1>Sticky footer with fixed navbar</h1>
-    </div> -->
-    <!-- <p class="lead">Pin a fixed-height footer to the bottom of the viewport in
+    </div>
+    <p class="lead">Pin a fixed-height footer to the bottom of the viewport in
       desktop browsers with this custom HTML and CSS. A fixed navbar has been
        added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p> -->
     <!-- <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p> -->
-  </div>
 
-  <div class="core">
 
-    <form class="create-survey">
+
+<!--    <form class="create-survey">
       <fieldset>
         <input type="text" name="survey[title]" placeholder="Create survey">
         <input type="submit" name="submit" value="Submit survey">
@@ -96,34 +103,63 @@
         <h5>This will break if you havent just created a survey</h5>
         <input type="string" name="question[id]" placeholder="Select ID">
         <input type="string" name="question[answer]" placeholder="Select ID">
-        <input type="submit" name="submit" value="Answer question">
+        <input type="submit" name="submit" value="Answer question"> -->
+    
+    <!--Push forms to this div. -->
+    <form class="create">
+      <fieldset>
+        <input type="text" name="survey[description]" placeholder="Create survey">
+        <button type="submit">Create New Survey</button>
+
       </fieldset>
     </form>
 
-     <button class="index" type="button">Index of Surveys</button>
+     <button class="indexOfSurveys" type="click">Index of Surveys</button>
 
-    <form class="show">
+
+    <!-- <form class="show">
       <fieldset>
-        <input type="string" name="survey[id]" placeholder="Find survey by ID">
+        <input type="string" name="survey[description]" placeholder="Find survey by ID">
         <input type="submit" name="submit" value="Submit ID">
       </fieldset>
-    </form>
-
+    </form> -->
+<!--
     <form class="destroy">
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Delete survey by ID">
         <input type="submit" name="submit" value="Submit ID">
       </fieldset>
-    </form>
+    </form> -->
 
-    <form class="update">
+    <!-- <form class="update">
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Select ID">
-        <input type="text" name="survey[title]" placeholder="Change Title">
-        <input type="submit" name="submit" value="Update Movie">
-      </fieldset>
-    </form>
 
+        <input type="text" name="survey[prompt]" placeholder="Change Title">
+        <input type="submit" name="submit" value="Update Survey">
+      </fieldset>
+    </form> -->
+</body>
+  </div>
+
+
+  <!-- <p id="message"></p> -->
+<!-- <fieldset>
+  <form id="createSurvey">
+          <input id="surveyList" type="text" name="survey[description]" placeholder="create survey">
+          <button id="createNewSurvey" type="submit" class="btn btn-default">New Survey</button>
+          <button id="getUserSurveys" type="submit" class="btn btn-default">Get Surveys</button>
+      </form>
+</fieldset> -->
+  <!-- This is where handlebars inserts -->
+<div id="content"></div>
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+      </div>
+    </div>
+  </footer>
   </div>
 
   <footer class="footer">
