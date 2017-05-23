@@ -7,10 +7,18 @@ const ui = require('./ui')
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log('events', data)
-  api.create(data)
-    .then(ui.createSuccess)
-    .catch(ui.createFailure)
+  console.log('create survey data: ' + data)
+  api.createSurvey(data)
+    .then(ui.createSurveySuccess)
+    .catch(ui.createSurveyFailure)
+}
+
+const onCreateQuestion = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.createQuestion(data)
+    .then(ui.createQuestionSuccess)
+    .catch(ui.createQuestionFailure)
 }
 
 const onIndexOfSurveys = function (event) {
@@ -52,8 +60,12 @@ const onRevealAddQuestion = function (event) {
 
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
-  $('#show-surveys').on('click', onIndexOfSurveys)
+  $('#create-question').on('submit', onCreateQuestion)
+  $('#indexOfSurveys').on('click', onIndexOfSurveys)
+  $('#getUserSurveys').on('click', onShowOneSurvey)
+  $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#content').on('click', '.delete-survey-button', onDestroy)
+  // $('#content').on('click', '.show-questions-button', onGetQuestions)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
 }

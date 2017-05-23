@@ -4,6 +4,23 @@ const store = require('../store.js')
 const api = require('./api.js')
 const showSurveyHB = require('../surveyHandlebars.handlebars')
 
+const createSurveySuccess = (response) => {
+  store.surveyID = response.survey.id
+  console.log('store.surveyID' + store.surveyID)
+  console.log('success')
+  console.log(response)
+}
+
+const createSurveyFailure = (error) => {
+  console.log('failed to create')
+  console.log(error)
+}
+
+const createQuestionSuccess = (response) => {
+  console.log('success')
+  console.log(response)
+}
+
 const refreshTable = () => {
   const showSurveyHtml = showSurveyHB({ surveys: store.userSurveys })
   console.log('refresh')
@@ -17,45 +34,17 @@ const userMessage = (txt) => {
   setTimeout(function () { $('#message').text('') }, 2000)
 }
 
-const createSuccess = (data) => {
-  console.log('create success')
-  store.userSurveys = data.surveys
-  refreshTable()
-  $('input').val('')
-  console.log(data)
-}
-
-const createFailure = (data) => {
-  console.log(data, 'failed to create')
-}
-
 const indexOfSurveysSuccess = (data) => {
   if (data.surveys.length === 0) {
     userMessage('You have no surveys created.')
   }
   store.userSurveys = data.surveys
   refreshTable()
-
 }
 
 const indexOfSurveysFailure = (surveyId) => {
   store.userSurveys = surveyId.surveys
   console.log('failed to index')
-}
-
-const showOneSurveySuccess = (data) => {
-  console.log('success')
-  console.log(data)
-  if (data.surveys.length === 0) {
-    userMessage('You have no surveys.')
-  }
-  store.userSurveys = data.surveys
-  refreshTable()
-}
-
-const showFailure = () => {
-  console.log('failed to show')
-  store.userSurveys = surveyId.surveys
 }
 
 const destroySuccess = () => {
@@ -72,7 +61,6 @@ const destroyFailure = (data) => {
 
 const updateSuccess = (surveyId) => {
   store.userSurveys = surveyId.surveys
-
   console.log(surveyId)
   console.log('successful update')
   refreshTable()
@@ -86,11 +74,11 @@ const updateFailure = (data) => {
 }
 
 module.exports = {
-  createSuccess,
-  createFailure,
+  createSurveySuccess,
+  createSurveyFailure,
+  createQuestionSuccess,
   indexOfSurveysSuccess,
   indexOfSurveysFailure,
-  showFailure,
   destroySuccess,
   destroyFailure,
   updateSuccess,

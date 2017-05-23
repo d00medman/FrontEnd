@@ -41,13 +41,13 @@
           </li>
         </ul>
         <div class="navbar-header" style="float: right;">
-          <button id='show-surveys' class="btn btn-default navbar-btn right">Show all Surveys</button>
+          <button id="indexOfSurveys" class="btn btn-default navbar-btn right">Show all Surveys</button>
         </div>
       </div>
 
     </div>
     <!--/.nav-collapse -->
-    </div>
+
   </nav>
 
   <!-- Begin page content -->
@@ -67,93 +67,30 @@
 
     <form id="create-survey">
       <fieldset>
-        <input class="form-control" onFocus="this.select()" type="text" name="survey[prompt]" placeholder="Create survey">
-        <input class="submit" type="submit" name="submit" value="Create Survey!">
+        <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Create survey">
+        <input class="submit" type="submit" name="submit" value="Sign in!">
       </fieldset>
     </form>
-    <!-- This is where handlebars inserts -->
-    <div id="content"></div>
 
-</body>
-<!-- <footer id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-      </div>
-    </div>
-  </div>
-</footer> -->
-
-    <!-- <div class="page-header">
-      <h1>Sticky footer with fixed navbar</h1>
-    </div>
-    <p class="lead">Pin a fixed-height footer to the bottom of the viewport in
-      desktop browsers with this custom HTML and CSS. A fixed navbar has been
-       added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p> -->
-    <!-- <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p> -->
-
-
-    <!--Push forms to this div. -->
-    <!-- <form class="create">
+    <form id="create-question">
+      <h5>This will break if you havent just created a survey</h5>
       <fieldset>
-        <input type="text" name="survey[description]" placeholder="Create survey">
-        <button type="submit">Create New Survey</button>
+        <input type="text" name="prompt" placeholder="Create question">
+        <input type="submit" name="submit" value="Submit question">
       </fieldset>
-    </form> -->
-
-       <!-- <button class="indexOfSurveys" type="click">Index of Surveys</button> -->
-
-
-    <!-- <form class="show">
-      <fieldset>
-        <input type="string" name="survey[description]" placeholder="Find survey by ID">
-        <input type="submit" name="submit" value="Submit ID">
-      </fieldset>
-    </form> -->
-<!--
-    <form class="destroy">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Delete survey by ID">
-        <input type="submit" name="submit" value="Submit ID">
-      </fieldset>
-    </form> -->
-
-    <!-- <form class="update">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Select ID">
-        <input type="text" name="survey[prompt]" placeholder="Change Title">
-        <input type="submit" name="submit" value="Update Survey">
-      </fieldset>
-    </form> -->
-</body>
+    </form>
   </div>
 
-
-  <!-- <p id="message"></p> -->
-<!-- <fieldset>
-  <form id="createSurvey">
-          <input id="surveyList" type="text" name="survey[description]" placeholder="create survey">
-          <button id="createNewSurvey" type="submit" class="btn btn-default">New Survey</button>
-          <button id="getUserSurveys" type="submit" class="btn btn-default">Get Surveys</button>
-      </form>
-</fieldset> -->
   <!-- This is where handlebars inserts -->
-<div id="content"></div>
-<footer id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-      </div>
-    </div>
-  </footer>
-  </div>
-
-  <footer class="footer">
+  <div id="content"></div>
+  <footer id="footer">
     <div class="container">
-      <p class="text-muted">Place sticky footer content here.</p>
-    </div>
+      <div class="row">
+        <div class="col-xs-12">
+        </div>
+      </div>
   </footer>
 
-  </body>
+</body>
 
 </html>
