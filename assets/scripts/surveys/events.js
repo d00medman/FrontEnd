@@ -57,8 +57,6 @@ const addHandlers = () => {
   $('.show').on('submit', onShow)
   $('#content').on('click', '.delete-survey-button', onDestroy)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
-  // $('.destroy').on('submit', onDestroy)
-  // $('.update').on('submit', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
 }
 
