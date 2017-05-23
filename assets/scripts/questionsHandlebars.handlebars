@@ -3,13 +3,13 @@
   <thead>
     <tr>
       <th>Survey Title</th>
+      <th>Description</th>
     </tr>
   </thead>
 {{#each surveys as |survey|}}
       <tr>
         <td>{{survey.title}}</td>
         <td>{{survey.owner}}</td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Survey</button></td>
         <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
         <td><form class="update-survey-by-id-form" surveyId="{{survey.id}}">
             <input type="text" id="update-survey-by-id-button" name="survey[description]">
