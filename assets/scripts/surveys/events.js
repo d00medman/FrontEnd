@@ -1,7 +1,6 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-
 const api = require('./api')
 const ui = require('./ui')
 
@@ -14,6 +13,7 @@ const onCreateSurvey = function (event) {
     .catch(ui.createFailure)
 }
 
+
 const onIndexOfSurveys = function (event) {
   event.preventDefault()
   api.indexOfSurveys()
@@ -21,12 +21,12 @@ const onIndexOfSurveys = function (event) {
     .catch(ui.indexOfSurveysFailure)
 }
 
-const onShow = function (event) {
+const onShowOneSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.show(data.survey.id)
-    .then(ui.showSuccess)
-    .catch(ui.showFailure)
+  api.showOneSurvey(data)
+    .then(ui.showOneSurveySuccess)
+    .catch(ui.showOneSurveyFailure)
 }
 
 const onDestroy = function (event) {
@@ -58,6 +58,8 @@ const addHandlers = () => {
   $('#content').on('click', '.delete-survey-button', onDestroy)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
+  $('#content').on('click', '.delete-survey-button', onDestroy)
+  $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
 }
 
 module.exports = {

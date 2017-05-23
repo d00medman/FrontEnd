@@ -1,4 +1,7 @@
 'use strict'
+const store = require('../store.js')
+const showSurveysHB = require('../surveyHandlebars.handlebars')
+const api = require('./api.js')
 
 const store = require('../store.js')
 const api = require('./api.js')
@@ -9,6 +12,7 @@ const refreshTable = () => {
   console.log('refresh')
   $('#content').empty()
   $('#content').append(showSurveyHtml)
+
 }
 
 const userMessage = (txt) => {
@@ -23,13 +27,11 @@ const createSuccess = (data) => {
   refreshTable()
   $('input').val('')
   console.log(data)
-  // burndown
 }
 
+
 const createFailure = (data) => {
-  // burndown
   console.log(data, 'failed to create')
-  // burndown
 }
 
 const indexOfSurveysSuccess = (data) => {
@@ -39,26 +41,27 @@ const indexOfSurveysSuccess = (data) => {
   store.userSurveys = data.surveys
   refreshTable()
 
-  // burndown
 }
 
 const indexOfSurveysFailure = (surveyId) => {
   store.userSurveys = surveyId.surveys
   console.log('failed to index')
-  // burndown
 }
 
-const showSuccess = (response) => {
-  // burndown
+const showOneSurveySuccess = (data) => {
   console.log('success')
-  console.log(response)
-  // burndown
+  console.log(data)
+  if (data.surveys.length === 0) {
+    userMessage('You have no surveys.')
+  }
+  store.userSurveys = data.surveys
+  refreshTable()
 }
+
 
 const showFailure = () => {
-  // burndown
   console.log('failed to show')
-  // burndown
+  store.userSurveys = surveyId.surveys
 }
 
 const destroySuccess = () => {
@@ -67,29 +70,25 @@ const destroySuccess = () => {
     .then(indexOfSurveysSuccess)
     .catch(indexOfSurveysFailure)
   console.log('successful deletion')
-  // burndown
 }
 
 const destroyFailure = (data) => {
-  // burndown
   console.log('deletion failed')
-  // burndown
 }
 
 const updateSuccess = (surveyId) => {
   store.userSurveys = surveyId.surveys
+
   console.log(surveyId)
   console.log('successful update')
   refreshTable()
   api.indexOfSurveys()
     .then(indexOfSurveysSuccess)
     .catch(indexOfSurveysFailure)
-  // burndown
 }
 
 const updateFailure = (data) => {
   store.userSurveys = data.surveys
-  // burndown
 }
 
 module.exports = {
