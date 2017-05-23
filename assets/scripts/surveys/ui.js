@@ -47,6 +47,15 @@ const indexOfSurveysFailure = (surveyId) => {
   console.log('failed to index')
 }
 
+const showAuthUserSurveysSuccess = (data) => {
+  console.log('show user survey fired', data)
+  refreshTable()
+}
+
+const showAuthUserSurveysFailure = (data) => {
+  console.log('failed to show user surveys', data)
+}
+
 const destroySuccess = () => {
   refreshTable()
   api.indexOfSurveys()
@@ -81,5 +90,7 @@ module.exports = {
   destroyFailure,
   updateSuccess,
   updateFailure,
-  refreshTable
+  refreshTable,
+  showAuthUserSurveysSuccess,
+  showAuthUserSurveysFailure
 }

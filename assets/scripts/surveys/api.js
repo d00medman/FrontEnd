@@ -10,7 +10,7 @@ const createSurvey = (data) => {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
@@ -43,6 +43,18 @@ const indexOfSurveys = function (data) {
   })
 }
 
+const showAuthUserSurveys = (data) => {
+  console.log('success')
+  return $.ajax({
+    url: config.apiOrigin + '/user-surveys',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const destroy = function (surveyId) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + surveyId,
@@ -69,5 +81,6 @@ module.exports = {
   createQuestion,
   update,
   indexOfSurveys,
-  destroy
+  destroy,
+  showAuthUserSurveys
 }
