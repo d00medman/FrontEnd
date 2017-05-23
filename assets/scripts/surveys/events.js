@@ -58,8 +58,6 @@ const addHandlers = () => {
   $('#content').on('click', '.delete-survey-button', onDestroy)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
-  $('#content').on('click', '.delete-survey-button', onDestroy)
-  $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
 }
 
 module.exports = {
