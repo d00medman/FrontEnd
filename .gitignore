@@ -3,6 +3,7 @@ dist
 vendor.js
 specs.js
 application.js
+.env
 _SpecRunner.html
 *.woff2
 *.woff
