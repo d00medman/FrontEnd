@@ -25,7 +25,7 @@ const createSuccess = (data) => {
 
 const createFailure = (error) => {
   // burndown
-  console.log('failed to create')
+  console.log(error, 'failed to create')
   console.log(error)
   // burndown
 }
