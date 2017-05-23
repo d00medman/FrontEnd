@@ -13,7 +13,6 @@ const onCreateSurvey = function (event) {
     .catch(ui.createFailure)
 }
 
-
 const onIndexOfSurveys = function (event) {
   event.preventDefault()
   api.indexOfSurveys()
@@ -54,7 +53,6 @@ const onRevealAddQuestion = function (event) {
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#show-surveys').on('click', onIndexOfSurveys)
-  $('.show').on('submit', onShow)
   $('#content').on('click', '.delete-survey-button', onDestroy)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)

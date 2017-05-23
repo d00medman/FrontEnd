@@ -26,16 +26,6 @@ const indexOfSurveys = function (data) {
   })
 }
 
-const showOneSurvey = function (surveyId) {
-  return $.ajax({
-    url: config.apiOrigin + '/surveys/' + surveyId,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
 const destroy = function (surveyId) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + surveyId,
@@ -45,7 +35,6 @@ const destroy = function (surveyId) {
     }
   })
 }
-
 
 const update = (surveyId, data) => {
 
@@ -63,6 +52,5 @@ module.exports = {
   create,
   update,
   indexOfSurveys,
-  show,
   destroy
 }

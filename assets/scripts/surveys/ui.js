@@ -1,7 +1,4 @@
 'use strict'
-const store = require('../store.js')
-const showSurveysHB = require('../surveyHandlebars.handlebars')
-const api = require('./api.js')
 
 const store = require('../store.js')
 const api = require('./api.js')
@@ -12,7 +9,6 @@ const refreshTable = () => {
   console.log('refresh')
   $('#content').empty()
   $('#content').append(showSurveyHtml)
-
 }
 
 const userMessage = (txt) => {
@@ -28,7 +24,6 @@ const createSuccess = (data) => {
   $('input').val('')
   console.log(data)
 }
-
 
 const createFailure = (data) => {
   console.log(data, 'failed to create')
@@ -57,7 +52,6 @@ const showOneSurveySuccess = (data) => {
   store.userSurveys = data.surveys
   refreshTable()
 }
-
 
 const showFailure = () => {
   console.log('failed to show')
@@ -96,7 +90,6 @@ module.exports = {
   createFailure,
   indexOfSurveysSuccess,
   indexOfSurveysFailure,
-  showSuccess,
   showFailure,
   destroySuccess,
   destroyFailure,
