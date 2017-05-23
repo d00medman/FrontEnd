@@ -66,11 +66,18 @@
 
     <form id="create-survey">
       <fieldset>
-        <input class="form-control" onFocus="this.select()"type="text" name="survey[prompt]" placeholder="Create survey">
+        <input class="form-control" onFocus="this.select()"type="text" name="survey[title]" placeholder="Create survey">
         <input class="submit" type="submit" name="submit" value="Sign in!">
       </fieldset>
     </form>
 
+    <form id="create-question">
+      <h5>This will break if you havent just created a survey</h5>
+      <fieldset>
+        <input type="text" name="prompt" placeholder="Create question">
+        <input type="submit" name="submit" value="Submit question">
+      </fieldset>
+    </form>
 
     <!-- <div class="page-header">
       <h1>Sticky footer with fixed navbar</h1>
@@ -89,13 +96,7 @@
       </fieldset>
     </form>
 
-    <form class="create-question">
-      <h5>This will break if you havent just created a survey</h5>
-      <fieldset>
-        <input type="text" name="prompt" placeholder="Create question">
-        <input type="submit" name="submit" value="Submit question">
-      </fieldset>
-    </form>
+    <
 
 
     <form class="answer-question">
@@ -104,12 +105,12 @@
         <input type="string" name="question[id]" placeholder="Select ID">
         <input type="string" name="question[answer]" placeholder="Select ID">
         <input type="submit" name="submit" value="Answer question"> -->
-    
+
     <!--Push forms to this div. -->
-    <form class="create">
+    <!-- <form class="create">
       <fieldset>
         <input type="text" name="survey[description]" placeholder="Create survey">
-        <button type="submit">Create New Survey</button>
+        <button type="submit">Create New Survey</button> -->
 
       </fieldset>
     </form>

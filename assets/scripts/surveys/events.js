@@ -7,6 +7,7 @@ const ui = require('./ui')
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
+  debugger
   console.log('create survey data: ' + data)
   api.createSurvey(data)
     .then(ui.createSurveySuccess)
@@ -19,10 +20,6 @@ const onCreateQuestion = function (event) {
   api.createQuestion(data)
     .then(ui.createQuestionSuccess)
     .catch(ui.createQuestionFailure)
-  console.log('events', data)
-  api.create(data)
-    .then(ui.createSuccess)
-    .catch(ui.createFailure)
 }
 
 const onIndex = function (event) {
@@ -70,14 +67,12 @@ const onRevealAddQuestion = function (event) {
 
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
-  $('.create-question').on('submit', onCreateQuestion)
+  $('#create-question').on('submit', onCreateQuestion)
   $('.indexOfSurveys').on('click', onIndex)
   $('#getUserSurveys').on('click', onShowOneSurvey)
   $('.index').on('click', onIndex)
-  $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
   $('.update').on('submit', onUpdate)
-  $('.answer-question').on('submit', onAnswerQuestion)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#content').on('click', '.delete-survey-button', onDestroy)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)

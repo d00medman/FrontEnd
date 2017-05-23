@@ -8,7 +8,6 @@ const createSurveySuccess = (response) => {
   console.log('store.surveyID' + store.surveyID)
   console.log('success')
   console.log(response)
-
 }
 
 const createSurveyFailure = (error) => {
@@ -22,7 +21,7 @@ const createQuestionSuccess = (response) => {
   // burndown
   console.log('success')
   console.log(response)
-
+}
 const refreshTable = () => {
   const showSurveyHtml = showSurveysHB({ surveys: store.userSurveys })
   $('#content').empty()
@@ -34,7 +33,6 @@ const userMessage = (txt) => {
   $(message).text(txt)
   setTimeout(function () { $('#message').text('') }, 2000)
 }
-
 
 const createQuestionFailure = (error) => {
   // burndown

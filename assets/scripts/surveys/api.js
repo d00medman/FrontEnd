@@ -14,9 +14,8 @@ const createSurvey = (data) => {
   })
 }
 
-
 const createQuestion = (data) => {
-  console.log("store.surveyID: " + store.surveyID)
+  console.log('store.surveyID: ' + store.surveyID)
   console.log('data.prompt: ' + data.prompt)
   return $.ajax({
     url: config.apiOrigin + '/questions/',
