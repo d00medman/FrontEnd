@@ -17,10 +17,14 @@ const signInSuccess = (data) => {
   console.log('signInSuccess')
   store.user = data.user
   console.log(data, data.user)
+  $('#sign-in-nav').hide()
+  $('#sign-up-nav').hide()
   $('form#sign-up').hide()
   $('form#sign-in').hide()
+  $('a.dropdown-toggle').css('visibility', 'visible')
   $('#indexOfSurveys').hide()
   $('#indexOfUserSurveys').show()
+  $('#create-survey-nav').show()
 
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
