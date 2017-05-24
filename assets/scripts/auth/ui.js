@@ -19,6 +19,8 @@ const signInSuccess = (data) => {
   console.log(data, data.user)
   $('form#sign-up').hide()
   $('form#sign-in').hide()
+  $('#indexOfSurveys').hide()
+  $('#indexOfUserSurveys').show()
 
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
