@@ -67,22 +67,20 @@
 
     <form id="create-survey">
       <fieldset>
-        <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Create survey">
-        <input class="submit" type="submit" name="submit" value="Sign in!">
-      </fieldset>
-    </form>
-
-    <form id="create-question">
-      <h5>This will break if you havent just created a survey</h5>
-      <fieldset>
-        <input type="text" name="prompt" placeholder="Create question">
-        <input type="submit" name="submit" value="Submit question">
+        <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Survey Title">
+        <input class="submit" type="submit" name="submit" value="Create Survey">
       </fieldset>
     </form>
   </div>
 
   <!-- This is where handlebars inserts -->
   <div id="content"></div>
+  <form id="create-question">
+    <fieldset>
+      <input class="form-control" type="text" name="prompt" placeholder="Create question">
+      <input type="submit" name="submit" value="Add Question">
+    </fieldset>
+  </form>
   <footer id="footer">
     <div class="container">
       <div class="row">
