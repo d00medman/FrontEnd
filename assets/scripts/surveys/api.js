@@ -33,6 +33,7 @@ const createQuestion = (data) => {
 }
 
 const indexOfSurveys = function (data) {
+  console.log('success index of surveys function fired')
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
     method: 'GET',
@@ -44,7 +45,7 @@ const indexOfSurveys = function (data) {
 }
 
 const showAuthUserSurveys = (data) => {
-  console.log('success')
+  console.log('success show auth user survey function fired')
   return $.ajax({
     url: config.apiOrigin + '/user-surveys',
     method: 'GET',

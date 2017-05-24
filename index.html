@@ -40,16 +40,19 @@
             </ul>
           </li>
         </ul>
+
         <div class="navbar-header" style="float: right;">
           <button id="indexOfSurveys" class="btn btn-default navbar-btn right">Show all Surveys</button>
         </div>
+
         <div class="navbar-header" style="float: right;">
           <form id='show-auth-user-surveys'>
             <fieldset>
-          <input type="submit" name="submit" class="btn btn-default navbar-btn right" value="Show User Surveys">
+          <input type="click" class="btn btn-default navbar-btn right" value="Show My Surveys">
         </fieldset>
         </form>
         </div>
+
       </div>
 
     </div>
@@ -103,8 +106,10 @@
   </div> -->
 
   <!-- This is where handlebars inserts -->
-  <div id="content"></div>
+  <div id="unauth-user-content"></div>
   <div id="auth-user-content"></div>
+  <div id="answerable-survey"></div>
+  <div id="editable-survey"></div>
   <footer id="footer">
     <div class="container">
       <div class="row">
