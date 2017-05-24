@@ -60,7 +60,6 @@ const destroyFailure = (data) => {
 }
 
 const updateSuccess = (surveyId) => {
-  store.userSurveys = surveyId.surveys
   console.log(surveyId)
   console.log('successful update')
   refreshTable()
@@ -70,7 +69,6 @@ const updateSuccess = (surveyId) => {
 }
 
 const updateFailure = (data) => {
-  store.userSurveys = data.surveys
 }
 
 module.exports = {
