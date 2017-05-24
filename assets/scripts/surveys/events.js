@@ -31,7 +31,7 @@ const onIndexOfSurveys = function (event) {
 const onShowAuthUserSurveys = function (event) {
   event.preventDefault()
   const userId = $(this).attr('userId')
-  console.log(userId)
+
   api.showAuthUserSurveys(userId)
   .then(ui.showAuthUserSurveysSuccess)
   .catch(ui.showAuthUserSurveysFailure)
@@ -46,12 +46,14 @@ const onDestroy = function (event) {
 }
 
 const onUpdate = function (event) {
+  console.log('on update fired')
+  console.log('event: ' + event)
+  console.log('this: ' + this)
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
-  let data = getFormFields(event.target)
-  // data = data.survey.target
-  // console.log(data.survey.title)
-  api.update(surveyId, data.survey.title)
+  console.log(surveyId)
+  const data = getFormFields(event.target)
+  api.update(surveyId, data)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
@@ -67,11 +69,11 @@ const addHandlers = () => {
   $('#indexOfSurveys').on('click', onIndexOfSurveys)
   $('#show-auth-user-surveys').on('click', onShowAuthUserSurveys)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
-  $('#handlebar-target').on('click', '.delete-survey-button', onDestroy)
+  $('#handlebar-target').on('click', '.delete-auth-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)
   // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
-  $('#create-survey-nav').on('click', onRevealAddQuestion)
-  $('#handlebar-target').on('submit', '#rename-auth-survey-by-id-button', onUpdate)
+  // $('#create-survey-nav').on('click', onRevealAddQuestion)
+  $('#handlebar-target').on('submit', '.update-survey-button', onUpdate)
 }
 
 module.exports = {

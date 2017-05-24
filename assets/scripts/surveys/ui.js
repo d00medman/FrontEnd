@@ -5,36 +5,7 @@ const api = require('./api.js')
 const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
 const authUserSurveyHB = require('../authUserHandlebars.handlebars')
 // const answerableSurveyHB = require('../answerableSurvey.handlebars')
-const editableSurveyHB = require('../editableSurveys.handlebars')
-
-// const userMessage = (txt) => {
-//   const message = $('#message')[0]
-//   $(message).text(txt)
-//   setTimeout(function () { $('#message').text('') }, 2000)
-// }
-
-// const refreshAuthUserSurveyTable = (data) => {
-//   console.log(data)
-//   const authUserSurveyHtml = authUserSurveyHB({ surveys: data })
-//   console.log(store.userSurveys)
-//   console.log('refresh-auth-user')
-//   $('#auth-user-content').empty()
-//   $('#auth-user-content').append(authUserSurveyHtml)
-// }
-
-// const refreshAnswerableSurveyTable = () => {
-//   const answerableSurveyHtml = answerableSurveyHB({ surveys: store.userSurveys })
-//   console.log('refresh-answerable')
-//   $('#answerable-survey').empty()
-//   $('#answerable-survey').append(answerableSurveyHtml)
-// }
-
-const refreshEditableSurveyTable = () => {
-  const editableSurveyHtml = editableSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh-editable')
-  $('#editable-survey').empty()
-  $('#editable-survey').append(editableSurveyHtml)
-}
+// const editableSurveyHB = require('../editableSurveys.handlebars')
 
 const createSurveySuccess = (response) => {
   store.surveyID = response.survey.id
@@ -67,10 +38,6 @@ const indexOfSurveysFailure = (surveyId) => {
 }
 
 const showAuthUserSurveysSuccess = (data) => {
-  // console.log(data)
-  // if (data.survey.length === 0) {
-  //   $('#user-message').text('You have no surveys created.')
-  // }
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
 }
@@ -80,7 +47,6 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
-  refreshEditableSurveyTable()
   api.indexOfSurveys()
     .then(indexOfSurveysSuccess)
     .catch(indexOfSurveysFailure)
@@ -94,10 +60,9 @@ const destroyFailure = (data) => {
 const updateSuccess = (surveyId) => {
   console.log(surveyId)
   console.log('successful update')
-  refreshEditableSurveyTable()
-  api.indexOfSurveys()
-    .then(indexOfSurveysSuccess)
-    .catch(indexOfSurveysFailure)
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
 }
 
 const updateFailure = (data) => {

@@ -59,7 +59,7 @@ const userIndex = function () {
 }
 
 const showAuthUserSurveys = (data) => {
-  console.log('success show auth user survey function fired')
+  console.log('data is ', data)
   return $.ajax({
     url: config.apiOrigin + '/user-surveys',
     method: 'GET',
@@ -103,14 +103,15 @@ const destroy = function (id) {
   })
 }
 
-const update = (data, id) => {
+const update = (surveyId, data) => {
+  console.log('I worked')
   return $.ajax({
-    url: config.apiOrigin + '/surveys/' + id,
+    url: config.apiOrigin + '/surveys/' + surveyId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
