@@ -1,5 +1,10 @@
-<table id="survey-question-table" class="table table-striped signed-in-view">
+<table id="survey-question-header-table" class="table table-striped signed-in-view">
 
+  <thead>
+    <tr>
+      <th>Survey Title: {{surveys.survey.title}}</th>
+    </tr>
+  </thead>
 {{#each questions as |question|}}
       <tr>
         <td>{{question.prompt}}</td>

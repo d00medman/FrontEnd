@@ -4,14 +4,15 @@ const store = require('../store.js')
 const api = require('./api.js')
 const showSurveyHB = require('../surveyHandlebars.handlebars')
 const showQuestionHB = require('../questionsHandlebars.handlebars')
+const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
 const createSurveySuccess = (response) => {
   store.surveyID = response.survey.id
-  const showQuestionHtml = showQuestionHB({ questions: store.userSurveys })
+  const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
   $('form#create-survey').hide()
   $('form#create-question').show()
   $('#content').append(showQuestionHtml)
-  console.log('store.surveyID' + store.surveyID)
+  console.log('response' + store.userSurveys)
   console.log('success')
   console.log(response)
 }
@@ -24,6 +25,8 @@ const createSurveyFailure = (error) => {
 const createQuestionSuccess = (response) => {
   console.log('success')
   console.log(response)
+  const showQuestionHtml = showQuestionHB({ questions: response })
+  $('#content').append(showQuestionHtml)
 }
 
 const refreshTable = () => {
