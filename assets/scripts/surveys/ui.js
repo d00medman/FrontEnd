@@ -2,8 +2,12 @@
 
 const store = require('../store.js')
 const api = require('./api.js')
-const showSurveyHB = require('../surveyHandlebars.handlebars')
+// const showSurveyHB = require('../surveyHandlebars.handlebars')
 const showQuestionHB = require('../questionsHandlebars.handlebars')
+const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
+const authUserSurveyHB = require('../authUserHandlebars.handlebars')
+// const answerableSurveyHB = require('../answerableSurvey.handlebars')
+// const editableSurveyHB = require('../editableSurveys.handlebars')
 const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
 const createSurveySuccess = (response) => {
@@ -29,34 +33,29 @@ const createQuestionSuccess = (response) => {
   $('#content').append(showQuestionHtml)
 }
 
-const refreshTable = () => {
-  const showSurveyHtml = showSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh')
-  $('#content').empty()
-  $('#content').append(showSurveyHtml)
-}
-
-const userMessage = (txt) => {
-  const message = $('#message')[0]
-  $(message).text(txt)
-  setTimeout(function () { $('#message').text('') }, 2000)
-}
-
 const indexOfSurveysSuccess = (data) => {
+  console.log(data)
   if (data.surveys.length === 0) {
-    userMessage('You have no surveys created.')
+    $('#user-message').text('There are no surveys to take.')
   }
-  store.userSurveys = data.surveys
-  refreshTable()
+  const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
+  $('#handlebar-target').html(unauthUserSurveyHtml)
 }
 
 const indexOfSurveysFailure = (surveyId) => {
-  store.userSurveys = surveyId.surveys
-  console.log('failed to index')
+  $('#user-message').text('Server ping failed.')
+}
+
+const showAuthUserSurveysSuccess = (data) => {
+  const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
+  $('#handlebar-target').html(answerableSurveyHtml)
+}
+
+const showAuthUserSurveysFailure = (data) => {
+  console.log('failed to show user surveys', data)
 }
 
 const destroySuccess = () => {
-  refreshTable()
   api.indexOfSurveys()
     .then(indexOfSurveysSuccess)
     .catch(indexOfSurveysFailure)
@@ -70,10 +69,9 @@ const destroyFailure = (data) => {
 const updateSuccess = (surveyId) => {
   console.log(surveyId)
   console.log('successful update')
-  refreshTable()
-  api.indexOfSurveys()
-    .then(indexOfSurveysSuccess)
-    .catch(indexOfSurveysFailure)
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
 }
 
 const updateFailure = (data) => {
@@ -89,5 +87,6 @@ module.exports = {
   destroyFailure,
   updateSuccess,
   updateFailure,
-  refreshTable
+  showAuthUserSurveysSuccess,
+  showAuthUserSurveysFailure
 }
