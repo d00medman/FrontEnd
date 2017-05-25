@@ -111,12 +111,23 @@ const answerFailure = (data) => {
   $('.alert').text('failure to log answers')
 }
 
+const extractVal = (data) => {
+  let layer = Object.values(data)
+  layer = Object.values(layer[0])
+  return layer[0]
+}
+
 const getQuestionDataSuccess = (data) => {
-  console.log('hits')
+  let yes = 0
+  let no = 0
+  for (let i = 0; i < data.question.results.length; i++) {
+    extractVal(data.question.results[i]) === true ? yes++ : no++
+  }
+  $('.alert').text(`The question '${data.question.prompt}' has been answered ${data.question.results.length} times. It got a yes ${yes} times and a no ${no} times.`)
 }
 
 const getQuestionDataFailure = (data) => {
-  console.log('fails')
+  $('.alert').text('failure to return question')
 }
 
 module.exports = {
