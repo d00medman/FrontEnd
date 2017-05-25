@@ -22,6 +22,7 @@ const onCreateQuestion = function (event) {
 }
 
 const onIndexOfSurveys = function (event) {
+  console.log('index events')
   event.preventDefault()
   api.indexOfSurveys()
     .then(ui.indexOfSurveysSuccess)
@@ -31,7 +32,6 @@ const onIndexOfSurveys = function (event) {
 const onShowAuthUserSurveys = function (event) {
   event.preventDefault()
   const userId = $(this).attr('userId')
-
   api.showAuthUserSurveys(userId)
   .then(ui.showAuthUserSurveysSuccess)
   .catch(ui.showAuthUserSurveysFailure)
@@ -84,8 +84,8 @@ const onAnswerQuestion = function (event) {
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
-  // $('#indexOfSurveys').on('click', onIndexOfSurveys)
-  $('#show-auth-user-surveys').on('click', onShowAuthUserSurveys)
+  $('#indexOfSurveys').on('click', onIndexOfSurveys)
+  $('#indexOfUserSurveys').on('click', onShowAuthUserSurveys)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.delete-auth-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)

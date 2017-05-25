@@ -56,9 +56,9 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
-  api.indexOfSurveys()
-    .then(indexOfSurveysSuccess)
-    .catch(indexOfSurveysFailure)
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
   console.log('successful deletion')
 }
 
