@@ -10,7 +10,7 @@
 {{#each questions as |question|}}
       <tr>
         <td>{{question.prompt}}</td>
-        <td>hitting</td>
+        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
         <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Questions</button></td>
         <td><button userId="{{user.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete Question</button></td>
         <td><form class="update-survey-by-id-form" userId="{{user.id}}">

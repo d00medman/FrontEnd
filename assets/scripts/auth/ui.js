@@ -4,19 +4,18 @@ const store = require('../store.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
-  console.log('sign-up ', data)
-
+  $('.alert').text('You have successfully signed up')
   document.getElementById('sign-up').reset()
 }
 
 const signUpFailure = () => {
-  console.log('signUpFailure')
+  $('.alert').text('You have failed to sign up')
 }
 
 const signInSuccess = (data) => {
-  console.log('signInSuccess')
   store.user = data.user
-  console.log(data, data.user)
+
+  $('.alert').text('You have successfully signed in')
   $('#sign-in-nav').hide()
   $('#sign-up-nav').hide()
   $('form#sign-up').hide()
@@ -39,18 +38,18 @@ const signInSuccess = (data) => {
 }
 
 const signInFailure = (data) => {
-  console.log('signInFailure ui')
-  // $('div.error-handling').text('Sign in error')
+  $('.alert').text('You have failed to sign in')
 }
 
 const signOutSuccess = (data) => {
-  console.log('signOutSuccess')
+  $('.alert').text('You have signed out')
 }
 
 const signOutFailure = (data) => {
-  console.log('signOutFailure')
+  $('.alert').text('You have failed to sign out')
   document.querySelector('.core').style.visibility = 'hidden'
 }
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
