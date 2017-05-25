@@ -84,7 +84,7 @@ const onAnswerQuestion = function (event) {
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
-  $('#indexOfSurveys').on('click', onIndexOfSurveys)
+  // $('#indexOfSurveys').on('click', onIndexOfSurveys)
   $('#show-auth-user-surveys').on('click', onShowAuthUserSurveys)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.delete-auth-survey-button', onDestroy)
