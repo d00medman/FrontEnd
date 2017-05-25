@@ -56,6 +56,7 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
+  // wtf
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
@@ -90,7 +91,11 @@ const surveyQuestionFailure = (data) => {
 }
 
 const answerSuccess = (data) => {
-  console.log(data)
+  console.log(data._id)
+  // $('[data-item-id=data._id]')
+  // $(data.target).parent().hide()
+  const targ = document.getElementById(data._id)
+  $(targ).hide()
   $('.alert').text('answer logged')
 }
 
