@@ -15,28 +15,27 @@ const createSurveySuccess = (response) => {
   const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
   $('form#create-survey').hide()
   $('form#create-question').show()
-  $('#content').append(showQuestionHtml)
-  console.log('response' + store.userSurveys)
-  console.log('success')
-  console.log(response)
+  $('#content').html(showQuestionHtml)
+  $('#handlebar-target').html('')
+  $('.alert').text('You have created a new survey titled ' + response.survey.title)
+  // console.log('response' + store.userSurveys)
+  // console.log('success')
+  // console.log(response)
 }
 
 const createSurveyFailure = (error) => {
-  console.log('failed to create')
-  console.log(error)
+  $('.alert').text('You have failed to create a new survey')
 }
 
 const createQuestionSuccess = (response) => {
-  console.log('success')
-  console.log(response)
+  $('.alert').text('You have added the question "' + response.question.prompt + '" to this survey')
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
 }
 
 const indexOfSurveysSuccess = (data) => {
-  console.log(data)
   if (data.surveys.length === 0) {
-    $('#user-message').text('There are no surveys to take.')
+    $('.alert').text('There are no surveys to take.')
   }
   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
   $('#handlebar-target').html(unauthUserSurveyHtml)
@@ -78,6 +77,9 @@ const updateSuccess = (surveyId) => {
 const updateFailure = (data) => {}
 
 const takeSurveySuccess = (data) => {
+  if (data.question.length === 0) {
+    $('.alert').text('There are no questions to answer.')
+  }
   const answerableSurvey = answerableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(answerableSurvey)
 }
@@ -96,9 +98,6 @@ const surveyQuestionsFailure = (data) => {
 }
 
 const answerSuccess = (data) => {
-  console.log(data._id)
-  // $('[data-item-id=data._id]')
-  // $(data.target).parent().hide()
   const targ = document.getElementById(data._id)
   $(targ).hide()
   $('.alert').text('answer logged')

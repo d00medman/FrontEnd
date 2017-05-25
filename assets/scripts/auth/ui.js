@@ -43,6 +43,13 @@ const signInFailure = (data) => {
 
 const signOutSuccess = (data) => {
   $('.alert').text('You have signed out')
+  $('#indexOfUserSurveys').hide()
+  $('#create-survey-nav').hide()
+  $('#indexOfSurveys').show()
+  $('#sign-in-nav').show()
+  $('#sign-up-nav').show()
+  $('form#sign-up').show()
+  $('form#sign-in').show()
 }
 
 const signOutFailure = (data) => {
