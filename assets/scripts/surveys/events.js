@@ -63,12 +63,20 @@ const onRevealAddQuestion = function (event) {
   $('form#create-survey').show()
 }
 
+const takeSurvey = function (event) {
+  event.preventDefault()
+  const surveyId = $(this).attr('surveyId')
+  api.surveyQuestions(surveyId)
+   .then(ui.takeSurveySuccess)
+   .catch(ui.takeSurveyFailure)
+}
+
 const onSurveyQuestions = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
   api.surveyQuestions(surveyId)
-   .then(ui.surveyQuestionSuccess)
-   .catch(ui.surveyQuestionFailure)
+   .then(ui.surveyQuestionsSuccess)
+   .catch(ui.surveyQuestionsFailure)
 }
 
 const onAnswerQuestion = function (event) {
@@ -93,8 +101,9 @@ const addHandlers = () => {
   // $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('submit', '.update-survey-button', onUpdate)
   $('handlebar-target').on('click', '.view-questions-button')
-  $('#handlebar-target').on('click', '.take-survey', onSurveyQuestions)
+  $('#handlebar-target').on('click', '.take-survey', takeSurvey)
   $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
+  $('#handlebar-target').on('click', '.view-questions-button', onSurveyQuestions)
 }
 
 module.exports = {

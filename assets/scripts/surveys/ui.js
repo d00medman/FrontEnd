@@ -7,7 +7,7 @@ const showQuestionHB = require('../questionsHandlebars.handlebars')
 const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
 const authUserSurveyHB = require('../authUserHandlebars.handlebars')
 const answerableSurveyHB = require('../answerableSurvey.handlebars')
-// const editableSurveyHB = require('../editableSurveys.handlebars')
+const editableSurveyHB = require('../editableSurveys.handlebars')
 const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
 const createSurveySuccess = (response) => {
@@ -75,19 +75,24 @@ const updateSuccess = (surveyId) => {
     .catch(showAuthUserSurveysFailure)
 }
 
-const updateFailure = (data) => {
-}
+const updateFailure = (data) => {}
 
-const surveyQuestionSuccess = (data) => {
-  console.log('hits questions')
-  console.log(data)
+const takeSurveySuccess = (data) => {
   const answerableSurvey = answerableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(answerableSurvey)
 }
 
-const surveyQuestionFailure = (data) => {
-  console.log(data)
-  $('.alert').text('failed return')
+const takeSurveyFailure = (data) => {
+  $('.alert').text('Unable to return questions from Server')
+}
+
+const surveyQuestionsSuccess = (data) => {
+  const editableSurvey = editableSurveyHB({ questions: data.question })
+  $('#handlebar-target').html(editableSurvey)
+}
+
+const surveyQuestionsFailure = (data) => {
+  $('.alert').text('Unable to return questions from Server')
 }
 
 const answerSuccess = (data) => {
@@ -100,8 +105,7 @@ const answerSuccess = (data) => {
 }
 
 const answerFailure = (data) => {
-  console.log(data)
-  $('.alert').text('log failure')
+  $('.alert').text('failure to log answers')
 }
 
 module.exports = {
@@ -116,8 +120,10 @@ module.exports = {
   updateFailure,
   showAuthUserSurveysSuccess,
   showAuthUserSurveysFailure,
-  surveyQuestionSuccess,
-  surveyQuestionFailure,
+  takeSurveySuccess,
+  takeSurveyFailure,
   answerSuccess,
-  answerFailure
+  answerFailure,
+  surveyQuestionsSuccess,
+  surveyQuestionsFailure
 }
