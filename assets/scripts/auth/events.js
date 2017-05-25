@@ -8,7 +8,6 @@ const ui = require('./ui')
 const onRevealSignUp = function () {
   $('form').hide()
   $('#handlebar-target').text('')
-  console.log('reavealevents')
   $('form#sign-up').animate({
     height: 'toggle'
   }, 200, function () {})
@@ -18,7 +17,6 @@ const onRevealSignUp = function () {
 const onRevealSignIn = function () {
   $('form').hide()
   $('#handlebar-target').text('')
-  console.log('reavealevents')
   $('form#sign-in').animate({
     height: 'toggle'
   }, 200, function () {})
@@ -26,7 +24,6 @@ const onRevealSignIn = function () {
 }
 
 const onSignUp = function (event) {
-  console.log('eventssignup')
   const data = getFormFields(this)
   event.preventDefault()
   api.signUp(data)

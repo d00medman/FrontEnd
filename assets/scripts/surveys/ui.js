@@ -7,7 +7,7 @@ const showQuestionHB = require('../questionsHandlebars.handlebars')
 const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
 const authUserSurveyHB = require('../authUserHandlebars.handlebars')
 const answerableSurveyHB = require('../answerableSurvey.handlebars')
-// const editableSurveyHB = require('../editableSurveys.handlebars')
+const editableSurveyHB = require('../editableSurveys.handlebars')
 const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
 const createSurveySuccess = (response) => {
@@ -15,30 +15,29 @@ const createSurveySuccess = (response) => {
   const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
   $('form#create-survey').hide()
   $('form#create-question').show()
-  $('#content').append(showQuestionHtml)
-  console.log('response' + store.userSurveys)
-  console.log('success')
-  console.log(response)
+  $('#content').html(showQuestionHtml)
+  $('#handlebar-target').html('')
+  $('.alert').text('You have created a new survey titled ' + response.survey.title)
+  // console.log('response' + store.userSurveys)
+  // console.log('success')
+  // console.log(response)
 }
 
 const createSurveyFailure = (error) => {
-  console.log('failed to create')
-  console.log(error)
+  $('.alert').text('You have failed to create a new survey')
 }
 
 const createQuestionSuccess = (response) => {
-  console.log('success')
-  console.log(response)
+  $('.alert').text('You have added the question "' + response.question.prompt + '" to this survey')
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
 }
 
 const indexOfSurveysSuccess = (data) => {
-  console.log(data)
   $('#handlebar-target').text('')
   $('form').hide()
   if (data.surveys.length === 0) {
-    $('#user-message').text('There are no surveys to take.')
+    $('.alert').text('There are no surveys to take.')
   }
   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
   $('#handlebar-target').html(unauthUserSurveyHtml)
@@ -59,6 +58,7 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
+  // wtf
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
@@ -77,29 +77,37 @@ const updateSuccess = (surveyId) => {
     .catch(showAuthUserSurveysFailure)
 }
 
-const updateFailure = (data) => {
-}
+const updateFailure = (data) => {}
 
-const surveyQuestionSuccess = (data) => {
-  console.log('hits questions')
-  console.log(data)
+const takeSurveySuccess = (data) => {
+  if (data.question.length === 0) {
+    $('.alert').text('There are no questions to answer.')
+  }
   const answerableSurvey = answerableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(answerableSurvey)
 }
 
-const surveyQuestionFailure = (data) => {
-  console.log(data)
-  $('.alert').text('failed return')
+const takeSurveyFailure = (data) => {
+  $('.alert').text('Unable to return questions from Server')
+}
+
+const surveyQuestionsSuccess = (data) => {
+  const editableSurvey = editableSurveyHB({ questions: data.question })
+  $('#handlebar-target').html(editableSurvey)
+}
+
+const surveyQuestionsFailure = (data) => {
+  $('.alert').text('Unable to return questions from Server')
 }
 
 const answerSuccess = (data) => {
-  console.log(data)
+  const targ = document.getElementById(data._id)
+  $(targ).hide()
   $('.alert').text('answer logged')
 }
 
 const answerFailure = (data) => {
-  console.log(data)
-  $('.alert').text('log failure')
+  $('.alert').text('failure to log answers')
 }
 
 module.exports = {
@@ -114,8 +122,10 @@ module.exports = {
   updateFailure,
   showAuthUserSurveysSuccess,
   showAuthUserSurveysFailure,
-  surveyQuestionSuccess,
-  surveyQuestionFailure,
+  takeSurveySuccess,
+  takeSurveyFailure,
   answerSuccess,
-  answerFailure
+  answerFailure,
+  surveyQuestionsSuccess,
+  surveyQuestionsFailure
 }
