@@ -79,7 +79,8 @@ const updateFailure = (data) => {
 
 const surveyQuestionSuccess = (data) => {
   console.log(data)
-  $('.alert').text('successful return')}
+  $('.alert').text('successful return')
+}
 
 const surveyQuestionFailure = (data) => {
   console.log(data)
@@ -88,7 +89,8 @@ const surveyQuestionFailure = (data) => {
 
 const answerSuccess = (data) => {
   console.log(data)
-  $('.alert').text('answer logged')}
+  $('.alert').text('answer logged')
+}
 
 const answerFailure = (data) => {
   console.log(data)
