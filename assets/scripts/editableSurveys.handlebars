@@ -7,10 +7,12 @@
     <th>{{question.prompt}}</th>
     </tr>
   </thead>
+  <h5 class="data-output"></h5>
 {{#each questions as |question|}}
       <tr>
         <td>{{question.prompt}}</td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
+        <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
+        <td><button questionId="{{question.id}}" type="click" class="btn btn-danger get-data">Get answer data from this question</button></td>
         <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Questions</button></td>
         <td><button userId="{{user.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete Question</button></td>
         <td><form class="update-survey-by-id-form" userId="{{user.id}}">

@@ -18,6 +18,7 @@ const createSurveySuccess = (response) => {
   $('#content').html(showQuestionHtml)
   $('#handlebar-target').html('')
   $('.alert').text('You have created a new survey titled ' + response.survey.title)
+  document.getElementById('create-survey').reset()
   // console.log('response' + store.userSurveys)
   // console.log('success')
   // console.log(response)
@@ -31,6 +32,7 @@ const createQuestionSuccess = (response) => {
   $('.alert').text('You have added the question "' + response.question.prompt + '" to this survey')
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
+  document.getElementById('create-question').reset()
 }
 
 const indexOfSurveysSuccess = (data) => {
@@ -58,7 +60,6 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
-  // wtf
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
@@ -110,6 +111,14 @@ const answerFailure = (data) => {
   $('.alert').text('failure to log answers')
 }
 
+const getQuestionDataSuccess = (data) => {
+  console.log('hits')
+}
+
+const getQuestionDataFailure = (data) => {
+  console.log('fails')
+}
+
 module.exports = {
   createSurveySuccess,
   createSurveyFailure,
@@ -127,5 +136,7 @@ module.exports = {
   answerSuccess,
   answerFailure,
   surveyQuestionsSuccess,
-  surveyQuestionsFailure
+  surveyQuestionsFailure,
+  getQuestionDataSuccess,
+  getQuestionDataFailure
 }

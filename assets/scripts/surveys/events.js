@@ -90,6 +90,13 @@ const onAnswerQuestion = function (event) {
     .catch(ui.answerFailure)
 }
 
+const onGetQuestionData = function (event) {
+  const id = $(this).attr('questionId')
+  api.getQuestionData(id)
+    .then(ui.getQuestionDataSuccess)
+    .catch(ui.getQuestionDataFailure)
+}
+
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
@@ -105,6 +112,7 @@ const addHandlers = () => {
   $('#handlebar-target').on('click', '.take-survey', takeSurvey)
   $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
   $('#handlebar-target').on('click', '.view-questions-button', onSurveyQuestions)
+  $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
 }
 
 module.exports = {

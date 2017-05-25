@@ -15,8 +15,8 @@ const createSurvey = (data) => {
 }
 
 const createQuestion = (data) => {
-  console.log('store.surveyID: ' + store.surveyID)
-  console.log('data.prompt: ' + data.prompt)
+  // console.log('store.surveyID: ' + store.surveyID)
+  // console.log('data.prompt: ' + data.prompt)
   return $.ajax({
     url: config.apiOrigin + '/questions/',
     method: 'POST',
@@ -33,7 +33,7 @@ const createQuestion = (data) => {
 }
 
 const indexOfSurveys = function (data) {
-  console.log('success index of surveys function fired')
+  // console.log('success index of surveys function fired')
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
     method: 'GET'
@@ -59,7 +59,7 @@ const indexOfSurveys = function (data) {
 // }
 
 const showAuthUserSurveys = (data) => {
-  console.log('data is ', data)
+  // console.log('data is ', data)
   return $.ajax({
     url: config.apiOrigin + '/user-surveys',
     method: 'GET',
@@ -71,7 +71,7 @@ const showAuthUserSurveys = (data) => {
 }
 
 const surveyQuestions = function (id) {
-  console.log(id)
+  // console.log(id)
   return $.ajax({
     url: config.apiOrigin + '/questions',
     method: 'GET',
@@ -104,7 +104,7 @@ const destroy = function (id) {
 }
 
 const update = (surveyId, data) => {
-  console.log('I worked')
+  // console.log('I worked')
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + surveyId,
     method: 'PATCH',
@@ -129,6 +129,13 @@ const answerQuestion = (data, id) => {
   })
 }
 
+const getQuestionData = (id) => {
+  return $.ajax({
+    url: config.apiOrigin + '/questions/' + id,
+    method: 'GET'
+  })
+}
+
 module.exports = {
   createSurvey,
   createQuestion,
@@ -139,5 +146,6 @@ module.exports = {
   // userIndex,
   surveyQuestions,
   show,
-  destroy
+  destroy,
+  getQuestionData
 }
