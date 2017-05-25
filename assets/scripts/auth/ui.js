@@ -25,6 +25,7 @@ const signInSuccess = (data) => {
   $('#indexOfSurveys').hide()
   $('#indexOfUserSurveys').show()
   $('#create-survey-nav').show()
+  $('#handlebar-target').html('')
 
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()
