@@ -86,7 +86,15 @@ const surveyQuestionSuccess = (data) => {
    console.log(data)
    $('.alert').text('failed return')
  }
-
+ 
+ const answerSuccess = (data) => {
+  console.log(data)
+  $('.alert').text('answer logged')
+}
+const answerFailure = (data) => {
+  console.log(data)
+  $('.alert').text('log failure')
+}
 
 
 module.exports = {
@@ -102,5 +110,7 @@ module.exports = {
   showAuthUserSurveysSuccess,
   showAuthUserSurveysFailure,
   surveyQuestionSuccess,
-  surveyQuestionFailure
+  surveyQuestionFailure,
+  answerSuccess,
+  answerFailure
 }
