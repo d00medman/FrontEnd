@@ -48,6 +48,7 @@ const indexOfSurveysFailure = (surveyId) => {
 
 const showAuthUserSurveysSuccess = (data) => {
   $('form').hide()
+  $('.alert').text('')
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
 }
