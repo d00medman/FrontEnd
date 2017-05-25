@@ -35,7 +35,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li id='sign-out'><a href="#">Sign Out</a></li>
-              <li id='change-password-nav'><a href="#">Change Password</a></li>
+              <li id='nav-change-password'><a href="#">Change Password</a></li>
             </ul>
           </li>
         </ul>
@@ -71,21 +71,11 @@
       </fieldset>
     </form>
 
-    <!-- <form class="destroy">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Delete survey by ID">
-        <input type="submit" name="submit" value="Submit ID">
-      </fieldset>
-    </form> -->
-
-    <!-- <form class="update">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Select ID">
-        <input type="text" name="survey[title]" placeholder="Change Title">
-        <input type="submit" name="submit" value="Update Movie">
-      </fieldset>
+    <form id="change-password">
+            <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password" onFocus="this.select()">
+            <input class="form-control" type="password" name="passwords[new]" placeholder="New Password" onFocus="this.select()">
+            <input class="submit" type="submit" name="submit" value="Change password!">
     </form>
-  </div> -->
 </div>
   <!-- This is where handlebars inserts -->
   <div id="content"></div>

@@ -35,6 +35,8 @@ const createQuestionSuccess = (response) => {
 
 const indexOfSurveysSuccess = (data) => {
   console.log(data)
+  $('#handlebar-target').text('')
+  $('form').hide()
   if (data.surveys.length === 0) {
     $('#user-message').text('There are no surveys to take.')
   }
@@ -47,6 +49,7 @@ const indexOfSurveysFailure = (surveyId) => {
 }
 
 const showAuthUserSurveysSuccess = (data) => {
+  $('form').hide()
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
 }

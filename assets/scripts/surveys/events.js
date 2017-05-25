@@ -61,6 +61,7 @@ const onUpdate = function (event) {
 const onRevealAddQuestion = function (event) {
   console.log('events')
   $('form#create-survey').show()
+  $('#handlebar-target').text('')
 }
 
 const onSurveyQuestions = function (event) {
