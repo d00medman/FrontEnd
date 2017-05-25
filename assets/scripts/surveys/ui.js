@@ -6,7 +6,7 @@ const api = require('./api.js')
 const showQuestionHB = require('../questionsHandlebars.handlebars')
 const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
 const authUserSurveyHB = require('../authUserHandlebars.handlebars')
-// const answerableSurveyHB = require('../answerableSurvey.handlebars')
+const answerableSurveyHB = require('../answerableSurvey.handlebars')
 // const editableSurveyHB = require('../editableSurveys.handlebars')
 const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
@@ -78,8 +78,10 @@ const updateFailure = (data) => {
 }
 
 const surveyQuestionSuccess = (data) => {
+  console.log('hits questions')
   console.log(data)
-  $('.alert').text('successful return')
+  const answerableSurvey = answerableSurveyHB({ questions: data.question })
+  $('#handlebar-target').html(answerableSurvey)
 }
 
 const surveyQuestionFailure = (data) => {
