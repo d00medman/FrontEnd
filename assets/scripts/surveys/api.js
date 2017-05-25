@@ -136,6 +136,16 @@ const getQuestionData = (id) => {
   })
 }
 
+const onDeleteQuestion = (id) => {
+  return $.ajax({
+    url: config.apiOrigin + '/questions/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createSurvey,
   createQuestion,
@@ -147,5 +157,6 @@ module.exports = {
   surveyQuestions,
   show,
   destroy,
-  getQuestionData
+  getQuestionData,
+  onDeleteQuestion
 }

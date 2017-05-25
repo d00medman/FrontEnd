@@ -90,6 +90,16 @@ const onGetQuestionData = function (event) {
     .catch(ui.getQuestionDataFailure)
 }
 
+const onDeleteQuestion = function (event) {
+  event.preventDefault()
+  console.log(event)
+  const id = $(this).attr('questionId')
+  console.log(id)
+  api.onDeleteQuestion(id)
+    .then(ui.deleteQuestionSuccess)
+    .catch(ui.deleteQuestionFailure)
+}
+
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
@@ -106,6 +116,7 @@ const addHandlers = () => {
   $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
   $('#handlebar-target').on('click', '.view-questions-button', onSurveyQuestions)
   $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
+  $('#handlebar-target').on('click', '.delete-question-button', onDeleteQuestion)
 }
 
 module.exports = {

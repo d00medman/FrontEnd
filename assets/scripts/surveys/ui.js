@@ -17,16 +17,16 @@ const createSurveySuccess = (response) => {
   $('form#create-question').show()
   $('#content').html(showQuestionHtml)
   $('#handlebar-target').html('')
-  $('.alert').text('You have created a new survey titled ' + response.survey.title)
+  $('.alert').text('You Have Created a New Survey Titled ' + response.survey.title)
   document.getElementById('create-survey').reset()
 }
 
 const createSurveyFailure = (error) => {
-  $('.alert').text('You have failed to create a new survey')
+  $('.alert').text('You have Failed to Create a New Survey')
 }
 
 const createQuestionSuccess = (response) => {
-  $('.alert').text('You have added the question "' + response.question.prompt + '" to this survey')
+  $('.alert').text('You Have Added The Question "' + response.question.prompt + '" to This Survey')
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
   document.getElementById('create-question').reset()
@@ -36,14 +36,14 @@ const indexOfSurveysSuccess = (data) => {
   $('#handlebar-target').text('')
   $('form').hide()
   if (data.surveys.length === 0) {
-    $('.alert').text('There are no surveys to take.')
+    $('.alert').text('There are no Surveys to Take.')
   }
   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
   $('#handlebar-target').html(unauthUserSurveyHtml)
 }
 
 const indexOfSurveysFailure = (surveyId) => {
-  $('.alert').text('Unable to retrieve data.')
+  $('.alert').text('Unable to Retrieve Data.')
 }
 
 const showAuthUserSurveysSuccess = (data) => {
@@ -54,18 +54,18 @@ const showAuthUserSurveysSuccess = (data) => {
 }
 
 const showAuthUserSurveysFailure = (data) => {
-  $('.alert').text('Unable to retrieve data.')
+  $('.alert').text('Unable to Retrieve Data.')
 }
 
 const destroySuccess = () => {
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
-  $('.alert').text('successful survey deletion')
+  $('.alert').text('Successful Survey Deletion')
 }
 
 const destroyFailure = (data) => {
-  $('.alert').text('survey deletion failed')
+  $('.alert').text('Survey Deletion Failed')
 }
 
 const updateSuccess = (surveyId) => {
@@ -78,14 +78,14 @@ const updateFailure = (data) => {}
 
 const takeSurveySuccess = (data) => {
   if (data.question.length === 0) {
-    $('.alert').text('There are no questions to answer.')
+    $('.alert').text('There are no Questions to Answer.')
   }
   const answerableSurvey = answerableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(answerableSurvey)
 }
 
 const takeSurveyFailure = (data) => {
-  $('.alert').text('Unable to return questions from Server')
+  $('.alert').text('Unable to Return Questions From Server')
 }
 
 const surveyQuestionsSuccess = (data) => {
@@ -94,17 +94,17 @@ const surveyQuestionsSuccess = (data) => {
 }
 
 const surveyQuestionsFailure = (data) => {
-  $('.alert').text('Unable to return questions from Server')
+  $('.alert').text('Unable to Return Questions From Server')
 }
 
 const answerSuccess = (data) => {
   const targ = document.getElementById(data._id)
   $(targ).hide()
-  $('.alert').text('answer logged')
+  $('.alert').text('Your Answer has Been Logged!')
 }
 
 const answerFailure = (data) => {
-  $('.alert').text('failure to log answers')
+  $('.alert').text('Failure to Log Answers')
 }
 
 const extractVal = (data) => {
@@ -123,7 +123,17 @@ const getQuestionDataSuccess = (data) => {
 }
 
 const getQuestionDataFailure = (data) => {
-  $('.alert').text('failure to return question')
+  $('.alert').text('Failure to Return Question')
+}
+
+const deleteQuestionSuccess = (data) => {
+  const targ = document.getElementById(data._id)
+  $(targ).hide()
+  $('.alert').text('Question Deleted')
+}
+
+const deleteQuestionFailure = (data) => {
+  $('.alert').text('Failed to Delete Question')
 }
 
 module.exports = {
@@ -145,5 +155,7 @@ module.exports = {
   surveyQuestionsSuccess,
   surveyQuestionsFailure,
   getQuestionDataSuccess,
-  getQuestionDataFailure
+  getQuestionDataFailure,
+  deleteQuestionSuccess,
+  deleteQuestionFailure
 }

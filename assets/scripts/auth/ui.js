@@ -4,12 +4,12 @@ const store = require('../store.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
-  $('.alert').text('You have successfully signed up')
+  $('.alert').text('You Have Successfully Signed Up')
   document.getElementById('sign-up').reset()
 }
 
 const signUpFailure = () => {
-  $('.alert').text('You have failed to sign up')
+  $('.alert').text('You Have Failed to Sign Up')
 }
 
 const signInSuccess = (data) => {
@@ -38,7 +38,7 @@ const signInSuccess = (data) => {
 }
 
 const signInFailure = (data) => {
-  $('.alert').text('You have failed to sign in')
+  $('.alert').text('You Have Failed to Sign In')
 }
 
 const signOutSuccess = (data) => {
@@ -54,16 +54,16 @@ const signOutSuccess = (data) => {
 }
 
 const signOutFailure = (data) => {
-  $('.alert').text('You have failed to sign out')
+  $('.alert').text('You Have Failed to Sign Out')
   document.querySelector('.core').style.visibility = 'hidden'
 }
 
 const changePasswordSuccess = (data) => {
-  $('#handlebar-target').text('Password changed')
+  $('#handlebar-target').text('Password Changed')
 }
 
 const changePasswordFailure = () => {
-  $('#handlebar-target').text('Change Password error')
+  $('#handlebar-target').text('You Must Give us the Correct Password If You Want to Change It')
 }
 
 module.exports = {
