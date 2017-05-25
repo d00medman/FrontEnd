@@ -78,24 +78,22 @@ const updateFailure = (data) => {
 }
 
 const surveyQuestionSuccess = (data) => {
-   console.log(data)
-   $('.alert').text('successful return')
- }
- 
- const surveyQuestionFailure = (data) => {
-   console.log(data)
-   $('.alert').text('failed return')
- }
- 
- const answerSuccess = (data) => {
   console.log(data)
-  $('.alert').text('answer logged')
+  $('.alert').text('successful return')}
+
+const surveyQuestionFailure = (data) => {
+  console.log(data)
+  $('.alert').text('failed return')
 }
+
+const answerSuccess = (data) => {
+  console.log(data)
+  $('.alert').text('answer logged')}
+
 const answerFailure = (data) => {
   console.log(data)
   $('.alert').text('log failure')
 }
-
 
 module.exports = {
   createSurveySuccess,

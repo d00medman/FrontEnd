@@ -64,12 +64,12 @@ const onRevealAddQuestion = function (event) {
 }
 
 const onSurveyQuestions = function (event) {
-   event.preventDefault()
-   const surveyId = $(this).attr('surveyId')
-   api.surveyQuestions(surveyId)
-     .then(ui.surveyQuestionSuccess)
-     .catch(ui.surveyQuestionFailure)
- }
+  event.preventDefault()
+  const surveyId = $(this).attr('surveyId')
+  api.surveyQuestions(surveyId)
+   .then(ui.surveyQuestionSuccess)
+   .catch(ui.surveyQuestionFailure)
+}
 
 const onAnswerQuestion = function (event) {
   event.preventDefault()
