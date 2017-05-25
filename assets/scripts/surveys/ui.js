@@ -19,9 +19,6 @@ const createSurveySuccess = (response) => {
   $('#handlebar-target').html('')
   $('.alert').text('You have created a new survey titled ' + response.survey.title)
   document.getElementById('create-survey').reset()
-  // console.log('response' + store.userSurveys)
-  // console.log('success')
-  // console.log(response)
 }
 
 const createSurveyFailure = (error) => {
@@ -46,7 +43,7 @@ const indexOfSurveysSuccess = (data) => {
 }
 
 const indexOfSurveysFailure = (surveyId) => {
-  $('#user-message').text('Server ping failed.')
+  $('.alert').text('Unable to retrieve data.')
 }
 
 const showAuthUserSurveysSuccess = (data) => {
@@ -56,23 +53,21 @@ const showAuthUserSurveysSuccess = (data) => {
 }
 
 const showAuthUserSurveysFailure = (data) => {
-  console.log('failed to show user surveys', data)
+  $('.alert').text('Unable to retrieve data.')
 }
 
 const destroySuccess = () => {
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
-  console.log('successful deletion')
+  $('.alert').text('successful survey deletion')
 }
 
 const destroyFailure = (data) => {
-  console.log('deletion failed')
+  $('.alert').text('survey deletion failed')
 }
 
 const updateSuccess = (surveyId) => {
-  console.log(surveyId)
-  console.log('successful update')
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)

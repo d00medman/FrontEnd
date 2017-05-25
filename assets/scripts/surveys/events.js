@@ -7,7 +7,6 @@ const ui = require('./ui')
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('create survey data: ' + data)
   api.createSurvey(data)
     .then(ui.createSurveySuccess)
     .catch(ui.createSurveyFailure)
@@ -22,7 +21,6 @@ const onCreateQuestion = function (event) {
 }
 
 const onIndexOfSurveys = function (event) {
-  console.log('index events')
   event.preventDefault()
   api.indexOfSurveys()
     .then(ui.indexOfSurveysSuccess)
@@ -46,12 +44,8 @@ const onDestroy = function (event) {
 }
 
 const onUpdate = function (event) {
-  console.log('on update fired')
-  console.log('event: ' + event)
-  console.log('this: ' + this)
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
-  console.log(surveyId)
   const data = getFormFields(event.target)
   api.update(surveyId, data)
     .then(ui.updateSuccess)
@@ -59,7 +53,6 @@ const onUpdate = function (event) {
 }
 
 const onRevealAddQuestion = function (event) {
-  console.log('events')
   $('form#create-survey').show()
   $('#handlebar-target').text('')
 }
