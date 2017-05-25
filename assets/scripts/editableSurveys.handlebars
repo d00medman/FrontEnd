@@ -10,7 +10,7 @@
   <h5 class="data-output"></h5>
 {{#each questions as |question|}}
       <tr>
-        <td>{{question.prompt}}</td>
+        <td class="prompt-title">{{question.prompt}}</td>
         <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
         <td><button questionId="{{question.id}}" type="click" class="btn btn-danger get-data">Get answer data from this question</button></td>
         <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Questions</button></td>

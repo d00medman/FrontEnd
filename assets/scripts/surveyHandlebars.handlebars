@@ -7,7 +7,7 @@
   </thead>
 {{#each surveys as |survey|}}
       <tr>
-        <td>{{survey.title}}</td>
+        <td class="prompt-title">{{survey.title}}</td>
         <td>{{survey.owner}}</td>
         <td><button surveyId="{{survey.id}}" type="click" class="btn btn-primary take-survey">Take Survey</button></td>
         <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td> -->

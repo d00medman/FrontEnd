@@ -9,6 +9,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  text-align: center;
 }
 .footer {
   position: absolute;
@@ -19,7 +20,10 @@ body {
   background-color: #f5f5f5;
 }
 
-
+.answer-question{
+  padding-top: .2cm;
+  padding-bottom: .2cm;
+}
 
 body > .container {
   padding: 60px 15px 0;
@@ -71,4 +75,12 @@ code {
 
 .core{
   visibility: hidden;
+}
+
+.prompt-title{
+  font-size: 15px;
+}
+
+.navbar{
+  font-family: 'Montserrat Subrayada', sans-serif;
 }
